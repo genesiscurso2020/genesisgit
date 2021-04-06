@@ -1,0 +1,735 @@
+body {
+
+/*background-color: #e9ebee;*/
+font-family: 'Open+Sans',sans-serif;
+}
+
+/* base .html */
+
+/* HEADER */
+
+.base header{
+	background-color: #383d43;
+	padding-bottom: 10px;
+}
+
+/* LOGO */
+
+.base header .logo{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 40px;
+}
+
+.base header .logo img{
+	width: 80px;
+	height: 50px;
+}
+
+
+/* BUSQUEDA */
+
+.base header .busqueda-menu{
+	padding-top: 30px;
+}
+
+.base header .busqueda input[type="text"]{
+	width: 100%;
+	background-color: #fff;
+	border: none;
+	font-size: 12px;
+	padding: 0 10px;
+	height: 25px;
+	line-height: 25px;
+	border-radius: 3px 0 0 3px;
+	color:#6d6d6d;
+	font-family: 'Open+Sans',sans-serif;
+}
+
+.base header .busqueda a{
+	width: 100%;
+	background-color: #fff;
+	border: none;
+	font-size: 12px;
+	padding: 0 10px;
+	height: 25px;
+	line-height: 25px;
+	border-radius: 0 3px 3px 0;
+	cursor: pointer;
+	color: #6d6d6d;
+}
+
+
+
+.base header .busqueda a:hover{
+	background-color: #099efc;
+	color:#fff;
+}
+
+/* MENU */
+
+.base header .menu a{
+	color: rgba(255,255,255,.8);
+	text-decoration: none;
+	margin-left: 20px;
+}
+
+.base header .menu a:hover{
+	color: rgba(255,255,255);
+}
+
+.base header .menu a span{
+	margin-left: 1px;
+}
+
+main .opcion-menu{
+	font-size: 9pt;
+}
+/* MAIN */
+
+main .pagina-inicio img{
+	width: 100%;
+	height: 100%;
+}
+
+/* PRESENTACION */
+
+main .mensaje{
+	padding-top: 1px;
+}
+
+/* PRIMER MENSAJE */
+main .primer-mensaje{
+	background-color: transparent;
+	padding: 5em 5em 5em 5em;
+}
+
+main .primer-mensaje .primer-izquierda{
+	padding-top: 0px;
+	padding-bottom: 5em;
+	text-align: center;
+}
+
+main .primer-mensaje .primer-izquierda img{
+	width: 550px;
+	height: 330px;
+}
+
+main .primer-mensaje .primer-derecha{
+	padding-top: 5em;
+	padding-bottom: 5em;
+	padding-left: 5em;
+	padding-right: 5em;
+	background-color: #caebf2;
+}
+main .primer-mensaje .texto-primer-titulo{
+	font-family: 'Roboto',sans-serif;
+	font-weight: 400;
+	font-size: 30pt;
+}
+
+main .primer-mensaje .texto-primer-mensaje{
+	padding-top: 50px;
+	font-family: 'Playfair Display',sans-serif;
+	font-size: 20pt;
+	font-weight: 400;
+}
+
+main .primer-mensaje .primer-boton{
+	padding-top: 3em;
+}
+
+/* SEGUNDO MENSAJE */
+
+main .segundo-mensaje{
+	background-color: rgba(48,51,84,255) /*#76323f*/;
+	padding: 5em 5em 5em 5em;
+}
+
+main .segundo-mensaje .segundo-derecha{
+	padding-top: 5em;
+	padding-bottom: 5em;
+	padding-left: 5em;
+	padding-right: 5em;
+	background-color: transparent;
+}
+
+main .segundo-mensaje .segundo-izquierda{
+	text-align: center;
+}
+
+main .segundo-mensaje .segundo-izquierda img{
+	width: 400px;
+	height: 300px;
+}
+
+main .segundo-mensaje .texto-segundo-titulo{
+	font-family: 'Roboto',sans-serif;
+	font-weight: 400;
+	font-size: 30pt;
+	color: #fff;
+}
+
+main .segundo-mensaje .texto-segundo-mensaje{
+	padding-top: 50px;
+	font-family: 'Playfair Display',sans-serif;
+	font-size: 20pt;
+	font-weight: 400;
+	color: yellow;
+}
+
+/* TERCER MENSAJE */
+
+main .tercer-mensaje{
+	padding: 0;
+}
+
+main .tercer-mensaje img{
+	width: 100%;
+	height: 64%;
+}
+
+main .tercer-mensaje .tercero-imagen-fondo{
+	opacity: 0.3;
+}
+main .tercer-mensaje .tercero-derecha{
+	padding-top: 5em;
+	padding-bottom: 5em;
+	padding-left: 5em;
+	padding-right: 5em;
+	background-color: transparent;
+}
+
+main .tercer-mensaje .texto-tercero-titulo{
+	font-family: 'Roboto',sans-serif;
+	font-weight: 700;
+	font-size: 30pt;
+	color: black;
+}
+
+main .tercer-mensaje .texto-tercero-mensaje{
+	padding-top: 50px;
+	font-family: 'Playfair Display',sans-serif;
+	font-size: 24pt;
+	font-weight: 400;
+	color: darkblue;
+}
+
+/* DATOS GENERALES LOGIN, REGISTRO, PERFIL, EMAIL */
+
+main .externa{
+	border-radius: 5px;
+	background: rgba(241,234,215,255)
+}
+
+main .externa .datos-registration{
+	padding: 50px 40px 20px 40px;
+}
+
+main .fila-color-uno{
+	border-top-left-radius: 3px ;
+	border-top-right-radius: 3px ;
+	height: 10px;
+	background-color: blue;
+}
+
+main .fila-color-dos{
+	height: 10px;
+	background: red;
+}
+
+main .externa .datos-registration form .boton{
+	margin-top: 40px;
+}
+
+.helptext{
+	font-size: 10pt;
+}
+
+main .externa .datos-registration .input{
+	height: 50px;
+	margin-bottom: 2px;
+}
+
+main .login{
+	margin-top: 120px;
+}
+
+main .login .externa .datos-registration .input{
+	height: 50px;
+	margin-bottom: 6px;
+}
+
+/* REGISTRO */
+
+main .registro{
+	margin-top: 120px;
+}
+
+main .registro .datos-registration ul{
+	font-size: 10pt;
+}
+
+/* PROFILE */
+
+main .profile{
+	margin-top: 140px;
+}
+
+main .profile .externa .datos-registration form .titulo{
+	margin-bottom: 30px;
+}
+
+
+/* PROFILE EMAIL*/
+
+main .profile-email{
+	margin-top: 120px;
+}
+
+/* PASSWORD RESET */
+
+main .password-reset{
+	margin-top: 120px;
+}
+
+/* LISTA DE PROYECTOS */
+
+main .lista-proyectos{
+	margin-top: 120px;
+}
+
+main .lista-proyectos .descripcion-proyecto{
+	line-height: 15px;
+}
+
+main .lista-proyectos .nombre-proyecto{
+	font-size: : 20pt;
+	font-weight: 600;
+}
+
+main .lista-proyectos .lista-pie small {
+	font-size: 6pt;
+}
+main .lista-proyectos .lista-pie a {
+	font-size: 8pt;
+}
+/* ARBOL DE PROYECTOS */
+
+main .arbol-proyectos{
+	margin-top: 120px;
+}
+
+main .arbol-proyectos .nombre-proyecto{
+	color:green;
+	font-weight: 500;
+}
+
+main .arbol-proyectos .lista img{
+	/*width: 20px;*/
+	height: 20px;
+}
+
+main .arbol-proyectos .lista_app img{
+	width: 15px;
+	height: 15px;
+}
+
+main .arbol-proyectos .titulo-arbol img{
+	width: 50px;
+	height: 50px;
+}
+
+main .arbol-proyectos .arbol-nombre-proyecto{
+	font-size: 14pt;
+	font-weight: 400;
+	color:black;
+}
+main .arbol-proyectos .arbol-nombre-modelo{
+	font-size: 12pt;
+	font-weight: 400;
+	color:green;
+}
+main .arbol-proyectos .arbol-nombre-propiedad{
+	font-size: 10pt;
+	font-weight: 400;
+	color:darkblue;
+}
+main .arbol-proyectos .arbol-nombre-regla{
+	font-size: 8pt;
+	font-weight: 400;
+	color:red;
+}
+
+/* CONSTRUCCION PASOS */
+
+main .construir{
+	margin-top: 120px
+}
+
+main .construir .pasos{
+	padding: 15px 5px 5px 25px;
+}
+
+main .construir .pasos .jumbotron{
+	background: transparent;
+}
+
+main .construir .pasos .jumbotron .container{
+	padding: 15px;
+	border: 1pt solid darkgray;
+	border-radius: 10px;
+}
+
+
+main .construir .pasos .jumbotron .titulo-paso{
+	font-family: 'Raleway', 'sans-serif';
+	font-size:20px;
+	font-weight: 600;
+}
+
+main .construir .pasos .jumbotron .texto-paso{
+	font-family: 'Raleway', 'sans-serif';
+	font-size:10pt;
+	font-weight: 300;
+}
+
+/* LISTA ERRORES */
+main .lista-errores{
+	margin-top: 120px;
+
+}
+main .lista-errores .fila-columnas-errores{
+	border-top:1pt solid gray; 
+	border-bottom: solid 1pt gray; 
+	font-size: 8pt;
+	font-family: raleway;
+	font-weight: 600;
+}
+main .lista-errores .fila-datos-errores{
+	font-family: raleway;
+	font-size: 8pt;
+}
+
+/* PERSONAIZACION */
+main .lista-personalizacion{
+	margin-top: 120px;
+}
+
+main .lista-personalizacion .fila-columnas-personalizacion{
+	border-top:1pt solid gray; 
+	border-bottom: solid 1pt gray; 
+	font-size: 10pt;
+	font-family: raleway;
+	font-weight: 600;
+}
+
+main .lista-personalizacion .fila-datos-personalizacion{
+	font-family: raleway;
+	font-size: 8pt;
+}
+
+/* DOWNLOAD */
+main .proceso-download{
+	margin-top: 120px;
+}
+
+/*main .lista-proyectos img{
+	width: 180px;
+	height: 180px;
+}*/
+
+/* PRECIOS */
+main .desplegar-precios{
+	margin-top: 120px;
+	font-size: 10pt;
+	font-family: Roboto;
+}
+main .titulo_precio{
+	color:white;
+	font-size: 13pt;
+	font-family: Roboto;
+}
+main .texto_opcion_precio{
+	color:#707dad;
+	font-size: 11pt;
+	font-family: Roboto;
+}
+
+main .titulo_opcion_precio{
+	color:magenta;
+	font-size: 14pt;
+	font-family: arial;
+	font-weight: 600;
+}
+
+main .precio{
+	color:red;
+	font-size: 18pt;
+}
+
+/* REVIEWS */
+main .reviews{
+	margin-top: 120px;
+
+}
+main .avatar-escritor{
+	width: 40px;
+	height: 40px;
+	padding-top: 0px;
+}
+main .username-escritor{
+	font-family: Roboto , 'Quicksand', 'sans-serif'; 
+	font-size: 8pt; 
+	color:brown; 
+	font-weight: 500;
+}
+main .nombre-usuario-escritor{
+	font-family: 'PT Serif', serif , Raleway; 
+	font-size: 14pt; 
+	font-weight: 600;
+}
+
+main .motivo-escritor{
+	font-family: Roboto , Raleway; 
+	font-size: 11pt;
+}
+
+main .fecha-escritor{
+	font-family: Roboto , Raleway; 
+	font-size: 11pt; 
+	color:red;
+}
+
+main .texto-escritor{
+	font-family: Roboto , 'Quicksand', sans-serif; 
+	font-size: 10pt; 
+	color:black;
+	padding: 15px 15px 5px 15px;
+	background-color: #f2f3f5; 
+	border-radius: 15px;
+}
+
+main .link-respuesta{
+	font-size: 10pt;
+}
+
+main .avatar-respuesta{
+	width: 30px;
+	height: 30px;
+	padding-top: 0px;
+}
+main .username-respuesta{
+	font-family: Roboto , 'Quicksand', 'sans-serif'; 
+	font-size: 8pt; 
+	color:brown; 
+	font-weight: 500;
+}
+main .nombre-usuario-respuesta{
+	font-family: 'PT Serif', serif , Raleway; 
+	font-size: 12pt; 
+	font-weight: 600;
+}
+
+main .motivo-respuesta{
+	font-family: Roboto , Raleway; 
+	font-size: 10pt;
+}
+
+main .fecha-respuesta{
+	font-family: Roboto , Raleway; 
+	font-size: 10pt; 
+	color:red;
+}
+
+main .texto-respuesta{
+	font-family: Roboto , 'Quicksand', sans-serif; 
+	font-size: 10pt; 
+	color:black;
+	padding: 15px 15px 5px 15px;
+	background-color: #f2f3f5;
+	border-radius: 15px;
+}
+
+main .boton-nuevo-review{
+	
+}
+
+main .fila-escritor{
+	padding: 10px 10px 5px 5px;
+	border-radius: 5px;
+	border-radius: 10px;
+	/*background: #fbfbfb;*/
+	background: white;
+}
+
+main .fila-respuesta{
+	padding: 10px 20px 5px 5px;
+	border-radius: 5px;
+	background: white;
+	border-radius: 10px;
+}
+
+
+/* PERSONALIZACION */
+main .controles-personaliza{
+	font-size: 10pt;
+	font-family: Courier+Prime;
+	font-weight: 400;
+	color:black;
+}
+
+/* CKEDITOR */
+.django-ckeditor-widget, .cke_editor_id_texto {
+    width: 100% !important;
+    max-width: 821px !important;
+}
+.django-ckeditor-widget, .cke_editor_id_descripcion {
+    width: 100% !important;
+    max-width: 821px !important;
+}
+
+/* ERRORES */
+main .mensaje_error{
+	font-size: 18pt;
+	color:red;
+	font-weight: 600;
+}
+
+/* PROCESO TEXTO */
+
+main .titulo_procesotexto{
+	font-size: 12pt;
+	font-weight: bold;
+	font-family: arial;
+}
+
+main .etiqueta_procesotexto{
+	font-size: 10pt;
+	font-family: arial;
+}
+
+main .texto_procesotexto{
+	font-size: 10pt;
+	font-family: arial;
+}
+
+/* PASOS */
+
+main .texto-paso{
+	font-size: 10pt;
+	font-family: Roboto,Arial
+}
+main .texto-tarea{
+	font-size: 10pt;
+	font-weight: 500;
+	font-family: Courier+Prime,Roboto,Arial;
+	color:blue;
+}
+@media screen and (max-width: 725px) {
+	header .header-busqueda{
+		margin-top: 10px;
+	}
+
+	header .header-busqueda .menu{
+		margin-bottom: 10px;
+	}
+
+	main .primer-mensaje .primer-derecha{
+		padding: 5px;
+	}
+
+	main .segundo-mensaje .segundo-derecha{
+		padding: 5px;
+	}
+
+	main .tercer-mensaje .tercero-derecha{
+		padding: 5px;
+	}
+
+	main .primer-mensaje .texto-primer-titulo{
+		font-size: 15pt;
+	}
+	main .segundo-mensaje .texto-segundo-titulo{
+		font-size: 15pt;
+	}
+	main .tercer-mensaje .texto-tercero-titulo{
+		font-size: 15pt;
+	}
+	main .primer-mensaje{
+		padding: 5px 10px 5px 20px;
+	}
+	main .segundo-mensaje{
+		padding: 5px 10px 5px 20px;
+	}
+	main .tercer-mensaje{
+		padding: 5px 10px 5px 20px;
+	}
+}
+
+
+.contenedor{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+ 
+.texto-encima{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.imagen .fila{
+			position: relative;
+			bottom:680px;
+/*			color:#fff;
+			background-color:#faa;
+			padding:2px 10px;
+			opacity:0.5;
+			font-weight:bold;
+}
+
+#imagen {
+			width:100%;
+			height:100%;
+			/*position:relative;*/
+		}
+		#imagen>div
+		{
+			position: relative;
+			bottom:100px;
+			color:#fff;
+			background-color:#000;
+			padding:2px 10px;
+			opacity:0.5;
+			font-weight:bold;
+		}
+
+main .controles-texto-grupo{
+	font-size: 12pt;
+	font-family: roboto;
+	font-weight: 600;
+	color:darkblue;
+}
+
+main .controles-label{
+	font-size: 10pt;
+	font-family: roboto;
+	font-weight: 500;
+	color:black;
+}
+
+main .controles-control{
+	font-size: 10pt;
+	font-family: roboto;
+	font-weight: 400;
+	color:black;
+
+}

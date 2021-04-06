@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<style>.errorlist{color:red;}</style>
+{% if error == '' %}
+  <div class="container registro">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos mb-2">
+          <div class="col datos-registration border">
+            <h3>Lo que se ejecuta en el Paso&nbsp;{{paso}}&nbsp;<a href="{% url 'crear:home' %}?proyecto_id={{proyecto.id}}&estado=0" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green;font-size: 8pt;">(volver)</span></a></h3>
+          </div>
+        </div>
+        {% for ejec in lista %}
+          <div class="row">
+            <div class="texto-paso col-1">{{ejec.4}})</div>
+            <div class="texto-paso col-{{ejec.2}}">{{ejec.0}}</div>
+            <div class="texto-tarea col-{{ejec.3}}">{{ejec.1}}</div>
+          </div>
+        {% endfor %}
+        <div class="row mb-3"></div>
+      </div>
+    </div>
+  </div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+{% endblock %}
+

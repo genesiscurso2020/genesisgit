@@ -1,0 +1,167 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<style>.errorlist{color:red;}</style>
+{% if error == '' %}
+  <div class="container registro">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos">
+          <div class="col datos-registration border">
+            <h3>Registro de Proyecto</h3>
+            <form class="mt-3" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+              {% include 'core/includes/formulario_proyecto.html'%}
+
+            <!-- Generales -->
+
+              <!-- {{form.as_p}} -->
+              <input type="submit" class="btn btn-primary btn-block mt-5" value="Confirmar">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+{% endblock %}
+
+
+<!--     # Generales
+    usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=30)
+    descripcion = models.TextField(blank=True,default='')
+    imagenpaginaprincipal = models.ImageField(upload_to='proyectos',blank=True,null=True)
+    colorpaginaprincipal = models.CharField(max_length=100,default='transparent')
+    conseguridad = models.BooleanField(default=False)
+    conetiquetaspersonalizacion = models.BooleanField(default=False)
+    estadogeneracion = models.SmallIntegerField(default=0)
+    conbusqueda = models.BooleanField(default=False)
+
+    # Imagen Titulo
+    imagentitulo = models.ImageField(upload_to='proyectos',blank=True,null=True)
+    imagentitulowidth = models.IntegerField(default=70)
+    imagentituloheight = models.IntegerField(default=30)
+
+    # Texto titulo
+    titulo = models.CharField(max_length=30,default='',blank=True)
+    fonttitulo = models.CharField(max_length=100,default='Raleway,20,500')
+    colortitulo = models.CharField(max_length=100,default='white')
+
+    # Posicion titulo
+    justificacionhorizontaltitulo = models.IntegerField(default=286)
+    justificacionverticaltitulo = models.IntegerField(default=0)
+
+    # Logo
+    avatar = models.ImageField(upload_to='proyectos',blank=True,null=True)
+    avatarwidth = models.IntegerField(default=30)
+    avatarheight = models.IntegerField(default=30)
+
+    # Posicion logo
+    justificacionhorizontallogo = models.IntegerField(default=20)
+    justificacionverticallogo = models.IntegerField(default=6)
+
+    # Primera fila
+    altofilaenizcede = models.IntegerField(default=40)
+    colorfilaenizcede = models.CharField(max_length=100,default='#4e4c45')
+
+    # Columna izquierda
+    numerocolumnaenizquierda = models.IntegerField(default=1)
+    altocolumnaenizquierda = models.IntegerField(default=40)
+    colorcolumnaenizquierda = models.CharField(max_length=100,default='transparent')
+
+    # Columna logo
+    altocolumnalogo = models.IntegerField(default=40)
+    colorcolumnalogo = models.CharField(max_length=100,default='transparent')
+    numerocolumnalogo = models.IntegerField(default=1)
+
+    # Columna titulo
+    altocolumnatitulo = models.IntegerField(default=40)
+    numerocolumnatitulo = models.IntegerField(default=8)
+    colorcolumnatitulo = models.CharField(max_length=100,default='transparent')
+
+    # Columna derecha
+    numerocolumnaenderecha = models.IntegerField(default=1)
+    altocolumnaenderecha = models.IntegerField(default=40)
+    colorcolumnaenderecha = models.CharField(max_length=100,default='transparent')
+
+    # Columna login
+    altocolumnalogin = models.IntegerField(default=20)
+    numerocolumnalogin = models.IntegerField(default=1)
+    colorcolumnalogin = models.CharField(max_length=100,default='transparent')
+
+    # Fila bume
+    altofilabume = models.IntegerField(default=40)
+    colorfilabume = models.CharField(max_length=100,default='#f1f3f4')
+    
+    # Columna bume izquierda
+    numerocolumnabumeizquierda = models.IntegerField(default=1)
+    altocolumnabumeizquierda = models.IntegerField(default=40)
+    colorcolumnabumeizquierda = models.CharField(max_length=100,default='transparent')
+
+    # Columna bume derecha
+    numerocolumnabumederecha = models.IntegerField(default=1)
+    altocolumnabumederecha = models.IntegerField(default=40)
+    colorcolumnabumederecha = models.CharField(max_length=100,default='transparent')
+
+    # Columna busqueda
+    altocolumnabusqueda = models.IntegerField(default=40)
+    numerocolumnabusqueda = models.IntegerField(default=3)
+    colorcolumnabusqueda = models.CharField(max_length=100,default='transparent')
+
+    # Columna menu
+    altocolumnamenu = models.IntegerField(default=40)
+    numerocolumnamenu = models.IntegerField(default=7)
+    colorcolumnamenu = models.CharField(max_length=100,default='transparent')
+
+    # Texto opciones menu
+    colormenu = models.CharField(max_length=100,default='#6d6d6d')
+    fontmenu = models.CharField(max_length=100,default='Open+Sans,10,400')
+
+    # Fila medio
+    altofilamedio = models.IntegerField(default=-100)
+    colorfilamedio = models.CharField(max_length=100,default='transparent')
+
+    # Columna medio izquierda
+    altocolumnamedioizquierda = models.IntegerField(default=-100)
+    numerocolumnamedioizquierda = models.IntegerField(default=1)
+    colorcolumnamedioizquierda = models.CharField(max_length=100,default='transparent')
+
+    # Columna medio centro
+    altocolumnamediocentro = models.IntegerField(default=-100)
+    numerocolumnamediocentro = models.IntegerField(default=10)
+    colorcolumnamediocentro = models.CharField(max_length=100,default='transparent')
+
+    # Columna medio derecha
+    altocolumnamedioderecha = models.IntegerField(default=-100)
+    numerocolumnamedioderecha = models.IntegerField(default=1)
+    colorcolumnamedioderecha = models.CharField(max_length=100,default='transparent')
+    
+    # Imagen de columna medio
+    imagenmedio = models.ImageField(upload_to='proyectos',blank=True,null=True)
+    textomedio = models.TextField(blank=True,default='')
+    colortextomedio = models.CharField(max_length=100,default='black')
+    fonttextomedio = models.CharField(max_length=100,default='Raleway,12,500')
+
+    # Fila pie
+    altofilapie = models.IntegerField(default=70)
+    colorfilapie = models.CharField(max_length=100,default='transparent')
+
+    # Columna pie
+    altocolumnapie = models.IntegerField(default=70)
+    colorcolumnapie = models.CharField(max_length=100,default='#fdfdfd')
+
+    # Imagen de volver
+    imagenvolver = models.ImageField(upload_to='proyectos',blank=True,null=True)
+
+    # Texto volver
+    textovolver = models.CharField(max_length=30,blank=True,default='Volver')
+    fonttextovolver = models.CharField(max_length=100,default='Arial,10,normal')
+    colortextovolver = models.CharField(max_length=20,default='green')
+ -->

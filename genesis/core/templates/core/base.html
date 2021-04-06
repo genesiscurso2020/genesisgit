@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Genesis</title>
+	{% include 'core/includes/css_general.html'%}
+
+
+</head>
+<body>
+	
+	<!-- Usar la CDN requiere acceso a Internet -->
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+
+
+	<!--  LOGO, MENU Y BUSQUEDA -->
+
+	<main class="base">
+		<div class="container-fluid">
+			<!--  HEADER -->
+			<header class="row fixed-top">
+				<!-- LOGO -->
+				<div class="col-1 d-none d-md-block logo">
+					<img src="{% static 'core/img/logo1.png' %}" alt="">
+				</div>
+				<!-- HEADER -->
+				<div class="col-none col-md-1"></div>
+				<div class="col-10 busqueda-menu">
+					<div class="row ">
+						<div class="col-12 col-md-3 busqueda order-2">
+<!-- 							<form method="get" action="">{% csrf_token %}
+								<div class="row no-gutters d-flex align-items-center">
+									<div class="col-10">
+										<input type="text" name='textob' placeholder="Datos del nombre o descripcion">
+									</div>
+									<div class="col-2">
+										<a href=""><i class="icon-search"></i></a>
+									</div>
+								</div>
+							</form> -->
+							<div class="row no-gutters d-flex align-items-center">
+								<div class="col-10">
+									<input type="text" id="textob" name='textob' placeholder="Datos del nombre o descripcion">
+								</div>
+								<div class="col-2 ">
+									{% if vigente == True %}
+									<a href="" id="link-busqueda" class="btn btn-white" ><i class="icon-search"></i></a>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+						<div class="col-md-9 col-12 text-lg-center menu order-md-2">
+							<div class="row">
+								<div class="col-7 opcion-menu">
+									{% if configuracion == 'proyecto' %}
+<!-- 										<a href="{% url 'crear:conf_base' %}?configuracion_proyecto=proyecto&proyecto_id={{proyecto.id}}"><span>Dimensiones</span></a> -->
+										<a href="{% url 'crear:colores' %}?configuracion_proyecto=proyecto&proyecto_id={{proyecto.id}}&red=0&green=0&blue=0"><span>Colores</span></a>
+										<a href="{% url 'crear:otros' %}?configuracion_proyecto=proyecto&proyecto_id={{proyecto.id}}"><span>Otros</span></a>
+									{% endif %}
+									{% if configuracion == 'modelo' %}
+										<a href="{% url 'crear:conf_modelo' %}?configuracion_proyecto=modelo&proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}"><span>Insertar</span></a>
+										<a href="{% url 'crear:conf_update_contiguo' %}?configuracion_proyecto=modelo&proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}"><span>Editar contiguo</span></a>
+										<a href="{% url 'crear:conf_update_abajo' %}?configuracion_proyecto=modelo&proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}"><span>Editar abajo</span></a>
+										<a href="{% url 'crear:conf_borra' %}?configuracion_proyecto=modelo&proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}"><span>Borrar</span></a>
+									{% endif %}
+								</div>
+								<div class="col-5 opcion-menu">
+									{% if not request.user.is_authenticated %}
+										<a class="ml-3" href="{% url 'registration:registro' %}"><span>Registro</span></a>
+										<a href="{% url 'login' %}"><span>Login</span></a>
+									{% else %}
+										<a class="" href="{% url 'registration:profile' %}"><span>Perfil</span></a>
+										<a href="{% url 'logout' %}"><span>Logout</span></a>
+									{% endif %}
+									<a href="{% url 'reviews:home' %}"><span>Reviews</span></a>
+									<a href="{% url 'proyectos:desplegar_precios' %}"><span>Precios</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+		</div>
+
+		{% block cuerpo %}{% endblock %}
+
+	</main>
+
+	{% include 'core/includes/js_general.html'%}
+
+</body>
+</html>

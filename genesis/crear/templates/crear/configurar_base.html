@@ -1,0 +1,179 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<script>
+  var div = document.querySelector("#div"), flag = false;
+ 
+div.addEventListener("mousedown", function(){
+    flag = true;
+}, false);
+ 
+document.addEventListener("mouseup", function(event){
+    if (flag){
+        div.style.width = event.clientX + "px";
+        div.style.height = event.clientY + "px";        
+        flag = false;
+    }
+}, false);
+</script>
+
+<div id="test" class="border" style="background:#44DDDD;height: 20px;width: 20px;margin-top: 140px;"></div>
+<script>
+document.onmousedown=function(e){
+e=e || event;
+x=e.clientX;
+y=e.clientY;
+document.getElementById("test").style.height=y+"px";
+document.getElementById("test").style.width=x+"px";
+}
+</script>
+
+<div class="border" id="div" class="" style="margin-top:140px;width: 20px;height: 20px;">
+  
+</div>
+<style>.errorlist{color:red;}</style>
+
+{% if error == '' %}
+<div class="container no-gutters" style="margin-top:140px;margin-left:20px;padding: 0;height: 120px">
+  <div class="row" style="padding: 0;height: 40px;">
+    <div class="col-1 border" style="padding: 0;height: 40px;"></div>
+    <div class="col-10 border text-center d-flex justify-content-center align-self-start" style="padding: 0;height: 40px;">b</div>
+    <div class="col-1 border" style="padding: 0;height: 40px;"></div>
+  </div>
+  <div class="row" style="padding: 0;height: 40px;">
+    <div class="col-1 border" style="padding: 0;height: 40px;">a</div>
+    <div class="col-10 border" style="padding: 0;height: 40px;"></div>
+    <div class="col-1 border d-flex justify-content-end" style="padding: 0;height: 40px;">g</div>
+  </div>
+  <div class="row" style="padding: 0;height: 40px;">
+    <div class="col-1 border" style="padding: 0;height: 40px;"></div>
+    <div class="col-10 border d-flex justify-content-center " style="padding: 0;height: 40px;">h</div>
+    <div class="col-1 border" style="padding: 0;height: 40px;"></div>
+  </div>
+</div>
+
+<div class="container no-gutters" style="margin-top:140px;padding: 0">
+  <div class="row no-gutters" style="height: 90px;padding: 0">
+    <div class="col border no-gutters">
+      <div class="container" style="padding: 0">
+        <div class="row border border-dark no-gutters" style="height: 20px;padding: 0">
+          <div class="col text-center justify-content-start">
+            a
+          </div>
+        </div>
+        <div class="row border border-dark no-gutters" style="height: 30px;padding: 0">
+          <div class="col no-gutters" style="padding: 0">
+            <div class="container no-gutters" style="margin: 0;padding: 0">
+              <div class="row no-gutters" style="padding: 0">
+                <div class="col ">d</div>
+                <div class="col "><span class="float-right">d</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row border border-dark no-gutters justify-content-end" style="height: 30px;padding: 0">
+          <div class="col text-center border" style="padding: 0"><span class="justify-content-end">c</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="col border">
+      
+    </div>
+    <div class="col border">
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="container " style="margin:140px 0 0 0;height: 210px">
+  <div class="row no-gutters">
+    <!-- COLUMNA CON DELIMITADORES -->
+    <div class="col border" style="margin: 0;">
+      <div class="row  no-gutters clearfix">
+        <div class="col-1 float-left align-self-center "><a href=""><img src="{% static 'core/img/izquierda.png' %}" alt=""></a>&nbsp;<a href=""><img src="{% static 'core/img/derecha.png' %}" alt=""></a></div>
+        <div class="col-10  text-center">
+          <div class="row border align-self-start">
+            <div class="col  ">
+              <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/arriba.png' %}" alt=""></div></a>
+              <div class="row" style="height: 2px;"></div>
+              <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/abajo.png' %}" alt=""></div></a>
+            </div>
+          </div>
+          <div class="row border" style="height: 200px;">
+            <div class="col  align-self-end">
+              <div class="col  ">
+                <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/arriba.png' %}" alt=""></div></a>
+                <div class="row" style="height: 2px;"></div>
+                <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/abajo.png' %}" alt=""></div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-1 no-gutters float-right align-self-center">
+          <span class="float-right"><a href=""><img src="{% static 'core/img/izquierda.png' %}" alt=""></a>&nbsp;<a href=""><img src="{% static 'core/img/derecha.png' %}" alt=""></a></span>
+        </div>
+      </div>
+    </div>
+    <div class="col border" style="margin: 0;">
+      <div class="row  no-gutters clearfix">
+        <div class="col-1 float-left align-self-center "><a href=""><img src="{% static 'core/img/izquierda.png' %}" alt=""></a>&nbsp;<a href=""><img src="{% static 'core/img/derecha.png' %}" alt=""></a></div>
+        <div class="col-10  text-center">
+          <div class="row align-self-start">
+            <div class="col  ">
+              <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/arriba.png' %}" alt=""></div></a>
+              <div class="row" style="height: 2px;"></div>
+              <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/abajo.png' %}" alt=""></div></a>
+            </div>
+          </div>
+          <div class="row " style="height: 200px;">
+            <div class="col  align-self-end">
+              <div class="col  ">
+                <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/arriba.png' %}" alt=""></div></a>
+                <div class="row" style="height: 2px;"></div>
+                <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/abajo.png' %}" alt=""></div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-1 no-gutters float-right align-self-center">
+          <span class="float-right"><a href=""><img src="{% static 'core/img/izquierda.png' %}" alt=""></a>&nbsp;<a href=""><img src="{% static 'core/img/derecha.png' %}" alt=""></a></span>
+        </div>
+      </div>
+    </div>
+    <div class="col border" style="margin: 0;">
+      <div class="row  no-gutters clearfix">
+        <div class="col-1 float-left align-self-center "><a href=""><img src="{% static 'core/img/izquierda.png' %}" alt=""></a>&nbsp;<a href=""><img src="{% static 'core/img/derecha.png' %}" alt=""></a></div>
+        <div class="col-10  text-center">
+          <div class="row align-self-start">
+            <div class="col  ">
+              <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/arriba.png' %}" alt=""></div></a>
+              <div class="row" style="height: 2px;"></div>
+              <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/abajo.png' %}" alt=""></div></a>
+            </div>
+          </div>
+          <div class="row " style="height: 200px;">
+            <div class="col  align-self-end">
+              <div class="col  ">
+                <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/arriba.png' %}" alt=""></div></a>
+                <div class="row" style="height: 2px;"></div>
+                <a href=""><div class="row justify-content-center"><img src="{% static 'core/img/abajo.png' %}" alt=""></div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-1 no-gutters float-right align-self-center">
+          <span class="float-right"><a href=""><img src="{% static 'core/img/izquierda.png' %}" alt=""></a>&nbsp;<a href=""><img src="{% static 'core/img/derecha.png' %}" alt=""></a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+
+{% endblock %}

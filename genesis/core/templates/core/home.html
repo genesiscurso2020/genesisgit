@@ -1,0 +1,82 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+
+	{% load static %}
+	<!-- PRESENTACION -->
+	<div class="row">
+		<div class="col pagina-inicio p-0">
+			<img src="{% static 'core/img/PaginaInicio1.png' %}" alt="">
+		</div>
+	</div>
+	<!-- MENSAJE 1 -->
+	<div class="row mensaje">
+		<div class="col primer-mensaje">
+			<div class="row">
+				<div class="col-lg-7 primer-izquierda d-flex align-items-center justify-content-center">
+					<img class="d-none d-lg-block" src="{% static 'core/img/mensaje1.png' %}" alt="">		
+				</div>
+				<div class="col-12 col-lg-5 primer-derecha ">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="col primer-titulo">
+							<span class="texto-primer-titulo">Simplifique sus disenos</span>
+						</div>
+					</div>
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="col d-none d-lg-block ">
+							<p class="texto-primer-mensaje">Solo ingrese datos conceptuales, como ser objetos, sus propiedades y sus reglas y genere toda la aplicacion de forma automatica.</p>
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-12 primer-boton">
+							<a class="btn btn-primary btn-block btn-lg" href="">Construir un Proyecto</a>
+							<!-- <button type="button" class="btn btn-primary">Construir un Proyecto</button> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mensaje">
+		<div class="col segundo-mensaje">
+			<div class="row">
+				<div class="col-12 col-lg-6 segundo-derecha ">
+					<div class="row  d-flex align-items-center justify-content-center">
+						<div class="col segundo-titulo">
+							<span class="texto-segundo-titulo">Optimice sus recursos</span>
+						</div>
+					</div>
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="col d-none d-lg-block">
+							<p class="texto-segundo-mensaje">Utilice de forma mucho mas eficiente sus recursos economicos, humanos y convierta a su empresa en una organizacion altamente productiva.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-6 segundo-izquierda d-flex align-items-center justify-content-center">
+					<img class="d-none d-lg-block" src="{% static 'core/img/mensaje2(1).png' %}" alt="">		
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row imagen mensaje d-none d-lg-block">
+		<div class="col tercer-mensaje">
+			<img class="tercero-imagen-fondo" src="{% static 'core/img/trabajoequipo.jpg' %}" alt="" >
+			<div class="row fila" >
+				<div class="col tercero-derecha ">
+					<div class="row">
+						<div class="col-4 tercero-titulo">
+							<span class="texto-tercero-titulo">Fortalezca sus equipos de trabajo</span>
+						</div>
+					</div>
+					<div class="row  d-flex align-items-center ">
+						<div class="col-8">
+							<p class="texto-tercero-mensaje">Utilice de forma mucho mas eficiente sus recursos economicos, humanos y convierta a su empresa en una organizacion altamente productiva.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+{% endblock %}

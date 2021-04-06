@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+	
+<style>
+	.arriba{
+		position: absolute;
+		top: 100%;
+		left: 40%;
+	}
+	.derecha{
+		position: absolute;
+		top:10%;
+		left: 0%;
+	}
+</style>
+
+
+
+
+<button style="margin-top: 140px;" type="button" id="myBtn" onclick="Cero()">Change the height of this button</button>
+<a href="" id="refe" onclick="myFunction()"></a>
+
+<script>
+function myFunction() {
+  var panelIzquierda = document.getElementById("refe");
+  document.getElementById("myBtn").style.height = "50px";
+  // alert(panelIzquierda.href);
+  panelIzquierda.href = '&width=' + divi.offsetWidth + '&height=' + divi.offsetHeight + '&top=' + divi.offsetTop + '&left=' + divi.offsetLeft;
+  // alert(panelIzquierda.href);
+  divi = document.getElementById("columna-enizcede")
+  divi.style.height = "250px";
+  panelIzquierda.href = '&width=' + divi.offsetWidth + '&height=' + divi.offsetHeight + '&top=' + divi.offsetTop + '&left=' + divi.offsetLeft;
+  // alert(panelIzquierda.href);
+  // obtien el elemento a
+  href = document.getElementById("ceiderecha")
+  href.href = href.href + '&width=' + divi.offsetWidth + '&height=' + divi.offsetHeight + '&top=' + divi.offsetTop + '&left=' + divi.offsetLeft;
+}
+function Cero() {
+    
+  divi = document.getElementById("columna-enizcede")
+  divi.style.height = "0px";
+  
+}
+</script>
+
+
+
+
+
+
+		<div id='divi' style="margin-bottom: 50px; margin-top: 200px; margin-left:100px;height: 100px;width: 200px;background: red;">
+
+		</div>
+
+	<div class="container mt-5 mb-5 " style="padding-top: 140px;">
+		<div class="col  border border-dark" id="columna-enizcede" style="height: {{alto}}">
+			<div class="row" id="fila-enizcede" >
+				<div class="" id="columna-logo">
+					<a href="" id="ceiderecha" onclick="myFunction()" ><img class="derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+				</div>
+			</div>
+			<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}" id="fearriba" onclick="myFunction()"><img class="arriba" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt=""></a>
+		</div>
+	</div>
+
+
+
+
+{% endblock %}

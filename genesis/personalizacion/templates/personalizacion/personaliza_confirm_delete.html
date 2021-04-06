@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% block menu %}
+  {% include 'core/includes/menu_proyectos.html'%}
+{% endblock %}
+{% block cuerpo %}
+
+{% if error == '' %}
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-8">
+				<form action="" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<p>Está seguro de eliminar la etiqueta: <b>{{nombre}}</b>?</p>
+					<input type="submit" value="Aceptar" />
+				</form>
+				<p><a href="{% url 'personalizacion:home' %}?proyecto_id={{proyecto.id}}&ingreso=0">Cancelar</a></p>
+			</div>
+			<div class="col-2"></div>
+		</div>
+	</div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+{% endblock %}

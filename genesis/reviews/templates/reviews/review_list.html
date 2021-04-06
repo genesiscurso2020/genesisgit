@@ -1,0 +1,200 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% block cuerpo %}
+
+  <!--  	<style>
+    	.font_nombre_usuario{font-family: 'PT Serif', serif , Raleway; font-size: 20pt; font-weight: 600}
+    	.font_nombre_usuario_respuesta{font-family: 'PT Serif', serif , Raleway; font-size: 17pt; font-weight: 600}
+    	.font_motivo{font-family: Roboto , Raleway; font-size: 15pt}
+    	.font_fecha{font-family: Roboto , Raleway; font-size: 15pt; color:red;}
+    	.font_fecha_respuesta{font-family: Roboto ; font-size: 12pt; color:red;}
+    	.font_texto{font-family: Roboto , 'Quicksand', sans-serif; font-size: 10pt; color:black;}
+    	.font_username{font-family: Roboto , 'Quicksand', sans-serif; font-size: 10pt; color:brown; font-weight: 500}
+    	.borde_review{border-bottom: 1pt solid gray;}
+    	.borde_respuesta{border-bottom: 1pt solid gray;}
+    	.back_ground_texto{background-color: #fff3f5; border-radius: 15px}
+    	.back_ground_texto_respuesta{background-color: #ffffdf}
+    	.centra_texto{padding: 15px 15px 5px 15px}
+    </style> -->
+
+<div class="container reviews" style="background: #e9ebee">
+	<div class="row">
+		<div class="col-2"></div>
+		<div class="col-8">
+			<div class="container">
+				<div class="row mt-5">
+					<!-- titulo -->
+					<div class="col">
+						<h3>LISTA DE REVIEWS&nbsp;&nbsp;<a href="{% url 'core:home' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="font-size: 10pt;">(Volver)</span></a></h3>
+					</div>
+				</div>
+				<div class="row">
+					<!-- reviews y respuestas -->
+					<div class="col">
+						{% for review in lista %}
+							<div class="container mb-2">
+								{% if review.7 == 'w' %}
+									<div class="row mt-1 fila-escritor border "  >
+										<!-- reviews -->
+										<div class="col">
+											<div class="container">
+												<div class="row">
+													<!-- avatar, username, nombre, motivo, created -->
+													<div class="col">
+														<div class="container">
+															<div class="row">
+																<!-- avatar, username -->
+																<div class="col-2 text-center">
+																	<div class="container">
+																		<div class="row">
+																			<!-- avatar -->
+																			<div class="col mt-2">
+																				{% if review.1 %}
+																					<img class="border rounded-circle avatar-escritor" src="{{review.1.url}}"  alt="">
+																				{% else %}
+																					<img src="{% static 'core/img/noavatar.png' %}" class="img-fluid rounded-circle avatar-escritor">
+																				{% endif %}
+																			</div>
+																		</div>
+																		<div class="row">
+																			<!-- username -->
+																			<div class="col font_username username-escritor">
+																				{{review.0}}
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<!-- nombre, motivo, created -->
+																<div class="col-10">
+																	<div class="container">
+																		<div class="row mt-2">
+																			<!-- nombre -->
+																			<div class="col font_nombre_usuario nombre-usuario-escritor">
+																				{{review.5}}
+																			</div>
+																		</div>
+																		<div class="row">
+																			<!-- motivo review -->
+																			<div class="col-4 font_motivo motivo-escritor">
+																				{{review.3}}
+																			</div>
+																			<!-- created review -->
+																			<div class="col-8 font_fecha fecha-escritor">
+																				{{review.2}}
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="row mt-3">
+													<!-- texto review y link respuesta -->
+													<div class="col">
+														<div class="container">
+															<div class="row mb-3">
+																<!-- texto review -->
+																<div class="col-2"></div>
+																<div class="col-10 back_ground_texto centra_texto font_texto texto-escritor">
+																	{{review.4|safe}}
+																</div>
+															</div>
+															<div class="row mb-2">
+																<div class="col-2"></div>
+																<div class="col-8 "></div>
+																<!-- link respuesta -->
+																<div class="col-2  link-respuesta">
+																	{% if request.user.is_authenticated %}	
+																		<a href="{% url 'reviews:respuesta' %}?review_id={{review.6}}">Responder</a>
+																	{% endif %}
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								{% else %}
+									<div class="row mt-2 " >
+										<!-- respuestas -->
+										<div class="col-1 "></div>
+										<div class="col-11 fila-respuesta border "  >
+											<div class="container">
+												<div class="row">
+													<!-- avatar, username -->
+													<div class="col-2 ">
+														<div class="container text-center">
+															<div class="row">
+																<!-- avatar -->
+																<div class="col mt-2">
+																	{% if review.1 %}
+																		<img class=" border rounded-circle avatar-respuesta" src="{{review.1.url}}"  alt="">
+																	{% else %}
+																		<img src="{% static 'core/img/noavatar.png' %}" class="border img-fluid rounded-circle avatar-respuesta">
+																	{% endif %}
+																</div>
+															</div>
+															<div class="row">
+																<!-- username -->
+																<div class="col font_username username-respuesta">
+																	{{review.0}}
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- nombre, created -->
+													<div class="col-10">
+														<div class="container">
+															<div class="row mt-1">
+																<!-- nombre -->
+																<div class="col font_nombre_usuario_respuesta nombre-usuario-respuesta">
+																	{{review.5}}
+																</div>
+															</div>
+															<div class="row">
+																<!-- created respuesta -->
+																<div class="col font_fecha_respuesta fecha-respuesta">
+																	{{review.2}}
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="row mt-3 mb-2">
+													<!-- texto respuesta -->
+													<div class="col-2"></div>
+													<div class="col-10 font_texto centra_texto back_ground_texto_respuesta texto-respuesta">
+														{{review.4|safe}}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								{% endif %}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				{% if request.user.is_authenticated %}	
+					<div class="row mt-5 mb-4">
+						<div class="col-0"></div>
+						<div class="col-12 boton-nuevo-review">
+							<a class="btn btn-primary btn-block font_link_nuevo_padre" href="{% url 'reviews:crear' %}">Nuevo Review</a>
+						</div>
+						<div class="col-0"></div>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="col-2"></div>
+	</div>
+</div>
+
+
+<!--  -->
+{% endblock %}
+

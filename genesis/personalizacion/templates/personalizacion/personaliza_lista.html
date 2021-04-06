@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+{% block menu %}
+	{% include 'core/includes/menu_lista_proyectos.html'%}
+{% endblock %}
+{% load static %}
+{% block cuerpo %}
+
+{% if error == '' %}
+<div class="container lista-personalizacion">
+	<div class="row mb-3">
+		<div class="col">
+			<h3>Lista de Personalizacion&nbsp;&nbsp;<a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a></h3>
+		</div>
+	</div>
+	<div class="row fila-columnas-personalizacion">
+		<div class="col-1">
+			<b>Aplicacion</b>
+		</div>
+		<div class="col-2">
+			<b>Archivo</b>
+		</div>
+		<div class="col-2">
+			<b>Etiqueta</b>
+		</div>
+		<div class="col-6">
+			<b>Codigo</b>
+		</div>
+	</div>
+	{% for personaliza in lista %}
+		<div class="row font_lista mt-2 fila-datos-personalizacion border-bottom">
+			<div class="col-1">
+				{{personaliza.aplicacion}}
+			</div>
+			<div class="col-2">
+				{{personaliza.archivo}}
+			</div>
+			<div class="col-2">
+				{{personaliza.tag}}
+			</div>
+			<div class="col-5">
+				{{personaliza.codigo}}
+			</div>
+<!-- 			<div class="col-1">
+				<a href="{% url 'personalizacion:editar' personaliza.id %}?aplicacion_id={{aplicacion.id}}" style="color:blue;">editar</a>
+			</div> -->
+			<div class="col-1 font_texto_personaliza">
+				<a href="{% url 'personalizacion:editar' personaliza.id %}?proyecto_id={{proyecto.id}}&ingreso=0" style="color:blue;">editar</a>
+			</div>
+			<div class="col-1 font_texto_personaliza">
+				<a href="{% url 'personalizacion:borrar' personaliza.id %}?proyecto_id={{proyecto.id}}&ingreso=0" style="color:blue;">borrar</a>
+			</div>
+		</div>
+	{% endfor %}
+		<div class="row mb-5"></div>
+</div>
+<!-- 	<div class="container mt-5">
+		<div class="row ml-1">
+			<a class=" font_link_nuevo_cuenta" href="{% url 'personalizacion:crear' %}?aplicacion_id={{aplicacion.id}}">Nuevo tag de Personalizacion</a>
+		</div> -->
+	</div>	<!--  -->
+
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+{% endblock %}
+

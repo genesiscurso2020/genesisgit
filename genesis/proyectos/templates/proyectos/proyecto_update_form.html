@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<style>.errorlist{color:red;}</style>
+{% if error == '' %}
+  <div class="container registro">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos">
+          <div class="col datos-registration border">
+
+
+
+            <h3>Modificacion de Proyecto <a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a></h3>
+            
+            <form class="mt-4" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+              {% if 'ok' in request.GET %}
+                <p style="color:red;">(Registro modificado correctamente)</p>
+              {% endif %}
+                {% include 'core/includes/formulario_proyecto.html'%}
+              <input type="submit" class="btn btn-primary btn-block mt-5" value="Confirmar">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,269 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+
+<style>
+	.arriba{
+		position: absolute;
+		top: 100%;
+		left: 40%;
+	}
+	.abajo{
+		position: absolute;
+		top:100%;
+		left: 60%;
+	}
+	.derecha{
+		position: absolute;
+		top:10%;
+		left: 0%;
+	}
+	.izquierda{
+		position: absolute;
+		top:50%;
+		left: 0%;
+	}
+	.derechaf{
+		position: absolute;
+		top:10%;
+		left: 100%;
+	}
+	.izquierdaf{
+		position: absolute;
+		top:50%;
+		left: 100%;
+	}
+  .derechad{
+    position: absolute;
+    top:1px;
+    /*left: 100%;*/
+  }
+  .izquierdad{
+    position: absolute;
+    top:30%;
+    /*left: 100%;*/
+  }
+</style>
+
+<script>
+function AltoEncabezado(href,current,direccion,flecha) {
+  var href = document.getElementById(href);
+  ref = '{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}';
+  var current = document.getElementById(current);
+  href.href = ref + '&height=' + current.offsetHeight + '&direccion=' + direccion + '&flecha=' + flecha + '&configuracion_proyecto=proyecto';
+}
+function AnchoEncabezadoIzquierda(href,direccion,flecha) {
+  var href = document.getElementById(href);
+  ref = '{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}';
+  href.href = ref + '&direccion=' + direccion + '&flecha=' + flecha  + '&configuracion_proyecto=proyecto';
+}
+function Ancho(href,direccion,flecha) {
+  var href = document.getElementById(href);
+  ref = '{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}';
+  href.href = ref + '&direccion=' + direccion + '&flecha=' + flecha  + '&configuracion_proyecto=proyecto';
+}
+
+function Aplica(href,seccion){
+	var valor = document.getElementById(href).value;
+	// alert(seccion)
+	var pagina = 'http://127.0.0.1:8000/crear/conf_modelo?proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}&seccion='+seccion+'&valor='+valor;
+	window.location.href = pagina;
+	// alert(pagina)
+}
+
+</script>
+
+
+{% if error == '' %}
+	
+	<div class="container" style="padding-top: 90px;" >
+
+		<div class="row">
+			<div class="col-3">
+			  <div class="row mb-2">Insertar Modelo</div>
+        <div class="row mb-1" >
+            <div class="col-7 controles-label">Columna izquierda</div>
+            <div class="col-5 controles_control" >
+              <input type="number" name="izquierdainserta" value="{{izquierdainserta}}" class="form-control font_control" required id="id_izquierdainserta" onchange="Aplica('id_izquierdainserta','izquierdainserta')" style="height: 20px;font-size: 8pt">
+            </div>
+         </div>
+         <div class="row  mb-1" >
+            <div class="col-7 controles-label">Columna Modelo</div>
+            <div class="col-5 controles_control">
+              <input type="number" name="enlogo" value="{{modeloinserta}}" class="form-control font_control" required id="id_modeloinserta"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_modeloinserta','modeloinserta')">
+            </div>
+         </div>
+         <div class="row  mb-1" >
+            <div class="col-7 controles-label">Columna derecha</div>
+            <div class="col-5 controles_control">
+              <input type="number" name="derechainserta" value="{{derechainserta}}" class="form-control font_control" required id="id_derechainserta"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_derechainserta','derechainserta')">
+            </div>
+         </div>               
+
+        {% if modelo.hijoscontiguos %}          
+          <div class="row mb-2 mt-2">Modificar Modelo con hijos contiguos</div>
+          <div class="row mb-1" >
+              <div class="col-7 controles-label">Columna izquierda</div>
+              <div class="col-5 controles_control" >
+                <input type="number" name="izquierdaupdatecontiguo" value="{{izquierdaupdatecontiguo}}" class="form-control font_control" required id="id_izquierdaupdatecontiguo" onchange="Aplica('id_izquierdaupdatecontiguo','izquierdaupdatecontiguo')" style="height: 20px;font-size: 8pt">
+              </div>
+           </div>
+             <div class="row  mb-1" >
+                <div class="col-7 controles-label">Columna Modelo</div>
+                <div class="col-5 controles_control">
+                  <input type="number" name="modeloupdatecontiguo" value="{{modeloupdatecontiguo}}" class="form-control font_control" required id="id_modeloupdatecontiguo"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_modeloupdatecontiguo','modeloupdatecontiguo')">
+                </div>
+             </div>
+             <div class="row  mb-1" >
+                <div class="col-7 controles-label">Columna derecha</div>
+                <div class="col-5 controles_control">
+                  <input type="number" name="derechaupdatecontiguo" value="{{derechaupdatecontiguo}}" class="form-control font_control" required id="id_derechaupdatecontiguo"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_derechaupdatecontiguo','derechaupdatecontiguo')">
+                </div>
+             </div>
+             <div class="row  mb-1" >
+                <div class="col-7 controles-label">Columna Hijos</div>
+                <div class="col-5 controles_control">
+                  <input type="number" name="hijosupdatecontiguo" value="{{hijosupdatecontiguo}}" class="form-control font_control" required id="id_hijosupdatecontiguo"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_hijosupdatecontiguo','hijosupdatecontiguo')">
+                </div>
+             </div>
+          {% else %}
+    				<div class="row mb-2 mt-2">Modificar Modelo con hijos abajo</div>
+            <div class="row mb-1" >
+                <div class="col-7 controles-label">Columna izquierda</div>
+                <div class="col-5 controles_control" >
+                  <input type="number" name="izquierdaupdate" value="{{izquierdaupdate}}" class="form-control font_control" required id="id_izquierdaupdate" onchange="Aplica('id_izquierdaupdate','izquierdaupdate')" style="height: 20px;font-size: 8pt">
+                </div>
+             </div>
+             <div class="row  mb-1" >
+                <div class="col-7 controles-label">Columna Modelo</div>
+                <div class="col-5 controles_control">
+                  <input type="number" name="modeloupdate" value="{{modeloupdate}}" class="form-control font_control" required id="id_modeloupdate"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_modeloupdate','modeloupdate')">
+                </div>
+             </div>
+             <div class="row  mb-1" >
+                <div class="col-7 controles-label">Columna derecha</div>
+                <div class="col-5 controles_control">
+                  <input type="number" name="derechaupdate" value="{{derechaupdate}}" class="form-control font_control" required id="id_derechaupdate"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_derechaupdate','derechaupdate')">
+                </div>
+             </div>
+          {% endif %}
+
+  				<div class="row mb-2">Borrar Modelo</div>
+          <div class="row mb-1" >
+              <div class="col-7 controles-label">Columna izquierda</div>
+              <div class="col-5 controles_control" >
+                <input type="number" name="izquierdaborra" value="{{izquierdaborra}}" class="form-control font_control" required id="id_izquierdaborra" onchange="Aplica('id_izquierdaborra','izquierdaborra')" style="height: 20px;font-size: 8pt">
+              </div>
+           </div>
+           <div class="row  mb-1" >
+              <div class="col-7 controles-label">Columna Modelo</div>
+              <div class="col-5 controles_control">
+                <input type="number" name="modeloborra" value="{{modeloborra}}" class="form-control font_control" required id="id_modeloborra"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_modeloborra','modeloborra')">
+              </div>
+           </div>
+           <div class="row  mb-1" >
+              <div class="col-7 controles-label">Columna derecha</div>
+              <div class="col-5 controles_control">
+                <input type="number" name="derechaborra" value="{{derechaborra}}" class="form-control font_control" required id="id_derechaborra"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_derechaborra','derechaborra')">
+              </div>
+           </div>
+      </div>
+      <div class="col-1"></div>
+			<div class="col-8 ">
+				<!-- diagrama -->
+				<div class="row " style="height: 33px"></div>
+				<div class="row" style="height: 107px">
+					<!-- central -->
+					<div class="col-{{anchomedioizquierda}} border"  style="height: 70px"></div>
+					<div class="col-{{anchomediocentro}} border"  style="height: 70px">
+            <div class="row">
+              {% if izquierdainserta > 0 %}
+                <div class="col-{{izquierdainserta}} border"  style="height: 70px ;background:#fcfcfc"></div>
+              {% endif %}
+              {% if modeloinserta > 0 %}
+                <div class="col-{{modeloinserta}} border"  style="height: 70px ;background:#fcfcfc"></div>
+              {% endif %}
+              {% if derechainserta > 0 %}
+                <div class="col-{{derechainserta}} border"  style="height: 70px ;background:#fcfcfc"></div>
+              {% endif %}
+            </div>     
+          </div>
+					<div class="col-{{anchomedioderecha}} border"  style="height: 70px"></div>
+				</div>
+
+        {% if modelo.hijoscontiguos %}    
+          <div class="row" style="height: 130px">
+            <!-- central -->
+            <div class="col-{{anchomedioizquierda}} border "  style="height: 95px"></div>
+            <div class="col-{{anchomediocentro}} border"  style="height: 95px">
+              <div class="row">
+                {% if izquierdaupdatecontiguo > 0 %}
+                  <div class="col-{{izquierdaupdatecontiguo}} border "  style="height: 95px ;background:#fcfcfc"></div>
+                {% endif %}
+                {% if modeloupdatecontiguo > 0 %}
+                  <div class="col-{{modeloupdatecontiguo}} border "  style="height: 95px ;background:#fcfcfc"></div>
+                {% endif %}
+                {% if derechaupdatecontiguo > 0 %}
+                  <div class="col-{{derechaupdatecontiguo}} border"  style="height: 95px ;background:#fcfcfc"></div>
+                {% endif %}
+                {% if hijosupdatecontiguo > 0 %}
+                  <div class="col-{{hijosupdatecontiguo}} border"  style="height: 95px ;background:#fcfcfc"></div>
+                {% endif %}
+              </div>     
+            </div>
+            <div class="col-{{anchomedioderecha}} border"  style="height: 95px"></div>
+          </div>
+        {% else %}
+          <div class="row" style="height: 106px">
+            <!-- central -->
+            <div class="col-{{anchomedioizquierda}} border"  style="height: 70px"></div>
+            <div class="col-{{anchomediocentro}} border"  style="height: 70px">
+              <div class="row">
+                {% if izquierdaupdate > 0 %}
+                  <div class="col-{{izquierdaupdate}} border"  style="height: 70px ;background:#fcfcfc"></div>
+                {% endif %}
+                {% if modeloupdate > 0 %}
+                  <div class="col-{{modeloupdate}} border"  style="height: 70px ;background:#fcfcfc"></div>
+                {% endif %}
+                {% if derechaupdate > 0 %}
+                  <div class="col-{{derechaupdate}} border"  style="height: 70px ;background:#fcfcfc"></div>
+                {% endif %}
+              </div>     
+            </div>
+            <div class="col-{{anchomedioderecha}} border"  style="height: 70px"></div>
+          </div>
+        {% endif %}
+
+				<div class="row">
+          <div class="col-{{anchomedioizquierda}} border"  style="height: 70px"></div>
+          <div class="col-{{anchomediocentro}} border"  style="height: 70px">
+            <div class="row">
+              {% if izquierdaborra > 0 %}
+                <div class="col-{{izquierdaborra}} border"  style="height: 70px ;background:#fcfcfc"></div>
+              {% endif %}
+              {% if modeloborra > 0 %}
+                <div class="col-{{modeloborra}} border"  style="height: 70px ;background:#fcfcfc"></div>
+              {% endif %}
+              {% if derechaborra > 0 %}
+                <div class="col-{{derechaborra}} border"  style="height: 70px ;background:#fcfcfc"></div>
+              {% endif %}
+            </div>     
+          </div>
+          <div class="col-{{anchomedioderecha}} border"  style="height: 70px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-5 mb-5 text-center">
+		<div class="col">
+			Volver a &nbsp;&nbsp;
+			<a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a>
+		</div>
+	</div>
+
+	</div>
+{% else %}
+{% endif %}
+
+{% endblock %}

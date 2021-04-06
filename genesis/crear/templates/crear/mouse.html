@@ -1,0 +1,149 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+	
+<style>
+	.arriba{
+		position: absolute;
+		top: 100%;
+		left: 40%;
+	}
+	.abajo{
+		position: absolute;
+		top:100%;
+		left: 60%;
+	}
+	.derecha{
+		position: absolute;
+		top:10%;
+		left: 0%;
+	}
+	.izquierda{
+		position: absolute;
+		top:50%;
+		left: 0%;
+	}
+
+	.marcador-horizontal{
+		width: 10px;
+		height: 15px;
+	}
+	.marcador-vertical{
+		width: 15px;
+		height: 10px;
+	}
+/*div{
+        border: 1px solid black;
+    }
+    div#PanelIzquierda{
+        float: left;
+        width: 30%;
+    }
+    div#PanelDerecha{
+        float: left;
+        width: 50%;
+    }*/
+    
+    #login5 {
+    position: absolute;
+    width: 260px;
+    left: calc(100% - 600px);
+    background-color: rgba(50, 50, 50, 0.6);
+    padding: 20px;
+    }
+</style>
+
+<style>
+#pp{width:100px; height:300px; background-color:#F00}
+</style>
+<script>
+function cambia(a,col, row){
+  alert('entro');
+  var ref = document.getElementById(a);
+  var columna = document.getElementById(col);
+  var fila = document.getElementById(row);
+  ref.href = ref.href + '&width=' + columna.offsetWidth + '&height=' + columna.offsetHeight + '&top=' + columna.offsetTop + '&left=' + columna.offsetLeft + '&filawidth=' + fila.offsetWidth  + '&filaheight=' + fila.offsetHeight  + '&filatop=' + fila.offsetTop  + '&filaleft=' + fila.offsetLeft  + '&flecha=' + a;
+  var div = document.getElementById("columna-pie")/*.style.background-color="black"*/;
+  alert(div.offsetWidth);
+  alert(div.offsetHeight);
+  div.style.offsetHeight='50px';
+}
+</script>
+
+
+	<div class="container mt-5 mb-5" style="padding-top: 140px;">
+		<div class="col-12 " style="height: {{altofilaenizcede}}" id="columna-enizcede">
+			<div class="row fila-enizcede mb-5 " id="fila-enizcede" style="margin-bottom: 9px; background-color: {{colorfilaenizcede}}; height: {{altofilaenizcede}}">
+				<div class="col-1 columna-enizquierda border " id="columna-enizquierda" style="background-color: {{colorcolumnaenizquierda}}; height: {{altofilaenizcede}}">
+				</div>
+				<div class="col-12 d-none d-md-block col-md-1 columna-logo border " id="columna-logo" style="background-color: {{colorcolumnalogo}};height: {{altofilaenizcede}} ">
+					<a href="" id="ceiderecha" onclick="cambia('ceiderecha','columna-enizquierda','fila-enizcede')" ><img class="derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+					<a href="" id="ceiizquierda"><img class="izquierda"  onclick="cambia('ceiizquierda','columna-enizquierda','fila-enizcede')" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+				</div>
+				<div class="col-12 col-md-4 columna-titulo border " id="columna-titulo" style="background-color: {{colorcolumnatitulo}}; height: {{altofilaenizcede}}">
+					<a href="" id="ceaderecha"><img class="derecha"  onclick="cambia('ceaderecha','columna-logo','fila-enizcede')" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+					<a href="" id="ceaizquierda"><img class="izquierda"  onclick="cambia('ceaizquierda','columna-logo','fila-enizcede')" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+				</div>
+				<div class="col-12 d-none d-md-block col-md-3 columna-login border" id="columna-login" style="background-color: {{colorcolumnalogin}};height: {{altofilaenizcede}} ">
+					<a href="" id="cetderecha"><img class="derecha"  onclick="cambia('cetderecha','columna-titulo','fila-enizcede')" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+					<a href="" id="cetizquierda"><img class="izquierda"  onclick="cambia('cetizquierda','columna-titulo','fila-enizcede')" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+				</div>
+				<div class="col-12 d-none d-md-block col-md-3 columna-enderecha border" style="background-color: {{colorcolumnaenderecha}}; height: {{altofilaenizcede}}">
+					<a href="" id="celderecha"><img class="derecha"  onclick="cambia('celderecha','columna-login','fila-enizcede')" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+					<a href="" id="celizquierda"><img class="izquierda"  onclick="cambia('celizquierda','columna-login','fila-enizcede')" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+				</div>
+			</div>
+			<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}" id="fearriba" onclick="cambia('fearriba','columna-enizcede','fila-enizcede')"><img class="arriba" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt=""></a>
+			<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}" id="feabajo" onclick="cambia('feabajo','columna-enizcede','fila-enizcede')"><img class="abajo" src="{% static 'core/img/abajo.png' %}"  width="15px" height="8px" alt=""></a>
+		</div>
+		<br>
+		<div class="col-12 " style="height: {{altofilabume}}" id="columna-bume">
+			<div class="row fila-bume " style="margin-bottom:9px; background-color: {{colorfilabume}};">
+				<div class="col-12 d-none d-md-block col-md-1 columna-bume-izquierda border" style="background-color: {{colorcolumnabumeizquierda}}; height: {{altofilabume}}">
+				</div>
+				<div class="col-12 col-md-4 columna-busqueda border" style="background-color: {{colorcolumnabusqueda}}; height: {{altofilabume}} ">
+					<a href="" id="cbiiderecha"><img class="derecha" onclick="cambia('cbiderecha','columna-bume','fila-enizcede')" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+					<a href="" id="cbiizquierda"><img class="izquierda" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+				</div>
+				<div class="col-12 col-md-5 columna-menu border" style="background-color: {{colorcolumnamenu}}; height: {{altofilabume}}">
+					<a href="" id="cbbderecha"><img class="derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+					<a href="" id="cbbizquierda"><img class="izquierda" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+				</div>
+				<div class="col-12 d-none d-md-block col-md-2 columna-bume-derecha border" style="background-color: {{colorcolumnabumederecha}}; height: {{altofilabume}}">
+					<a href="" id="cbmderecha"><img class="derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+					<a href="" id="cbmizquierda"><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+				</div>
+			</div>
+			<a href="" id="fbarriba"><img class="arriba" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt=""></a>
+			<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}" id="fbabajo" ><img class="abajo" src="{% static 'core/img/abajo.png' %}"  width="15px" height="8px" alt=""></a>
+		</div>
+		<br>
+		<div class="col-12" style="height: {{altofilamedio}}">
+			<div class="row fila-medio " style="background-color: {{colorfilamedio}} margin-bottom: 9px; ">
+				<div class="col-2 columna-medioizquierda border" style="background-color: {{colorcolumnamedioizquierda}}; z-index:2; height: {{altofilamedio}}">
+					<!-- Personaliza medio izquierda -->
+				</div>
+				<div class="col-8 columna-mediocentro border" style="z-index: 100;background-color: {{colorcolumnamediocentro}}; height: {{altofilamedio}}">
+					<a href="" id="cmiderecha"><img class="derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+					<a href="" id="cmiizquierda"><img class="izquierda" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+				</div>
+				<div class="col-2 columna-medioderecha border" style="background-color: {{colorcolumnamedioderecha}}; height: {{altofilamedio}}">
+					<a href="" id="cmmderecha"><img class="derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+					<a href="" id="cmmizquierda"><img class="izquierda" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+					<!-- Personaliza medio derecha -->
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="col-12 " style="height: 100px;background: red" id="columna-pie">
+			<div class="row fila-pie " >
+				<div class="col columna-pie border" >
+				</div>
+			</div>
+			<a href="" id="fparriba"><img class="arriba" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt="" style="z-index: 100"></a>
+			<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}" id="fpabajo" ><img class="abajo" src="{% static 'core/img/abajo.png' %}"  width="15px" height="8px" alt=""></a>
+		</div>
+	</div>
+
+{% endblock %}

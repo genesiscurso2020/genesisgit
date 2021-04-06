@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<style>.errorlist{color:red;}</style>
+
+{% if error == '' %}
+  <div class="container registro">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos">
+          <div class="col datos-registration border">
+            <h3>Registro de Aplicacion</h3>
+            
+            <p class="mb-2 mt-3 text-secondary">Proyecto:&nbsp;<span class="text-dark"><a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a></span></p>
+            {% if mensaje_error != '' %}
+              <p class="mb-3" style="color: red;font-size: 10pt">.&nbsp;{{mensaje_error}}</p>
+            {% endif %}
+            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+              {% include 'core/includes/formulario_aplicacion.html'%}
+              <!-- {{form.as_p}} -->
+              <input type="submit" class="btn btn-primary btn-block mt-5" value="Confirmar">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+
+{% endblock %}

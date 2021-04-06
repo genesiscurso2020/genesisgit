@@ -1,0 +1,9 @@
+                    {% load static %}
+                    <a href="#{{target}}" data-toggle="collapse" role="button" aria-expanded="false"  aria-controls="bloque1" class="ml-3 controles-label">{{titulo}}</a>
+                  
+                    <div class="collapse " id="{{target}}">
+                      <div class="card card-body " style="background: #f1ead7; border:none;">
+                        <span class="controles-control"></span>
+                        <img width="550px" height="450px" src="{% static imagen %}" alt="">
+                      </div>
+                    </div>

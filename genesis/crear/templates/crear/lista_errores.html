@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+
+	{% load static %}
+
+	<div class="container lista-errores">
+		<div class="row mb-3">
+			<div class="col">
+				<h3>Errores de Construccion&nbsp;&nbsp;<a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a></h3>
+			</div>
+		</div>
+		<div class="row wrap fila-columnas-errores mb-2" >
+			<div class="col-12 col-md-2">Etapa </div>
+			<div class="col-12 col-md-10">Mensaje</div>
+		</div>
+		{% for error in lista_errores %}
+			<div class="row fila-datos-errores">
+				<div class="col-12 col-md-2">{{error.etapa}}&nbsp;{% if error.severo %}(Severo){% endif %}{{error.created}}</div>
+				<div class="col-12 col-md-10 text-wrap">{{error.descripcion}}</div>
+			</div>
+			<div class="row border-bottom mb-2 fila-datos-errores">
+				<div class="col-12 col-md-2"></div>
+				<div class="col-12 d-none d-md-block col-md-10 mt-2 mb-2" >{{error.paso}}</div>
+			</div>
+		{% endfor %}
+
+	</div>
+
+{% endblock %}	

@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+{% include 'core/includes/css_general.html' %}
+{% include 'core/includes/js_general.html' %}
+<style>.errorlist{color:red;}</style>
+
+  <div class="container profile-email">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos">
+          <div class="col datos-registration border">
+            <form action="" method="post">{% csrf_token %}
+              <h3>Email&nbsp;&nbsp;<a href="{% url 'core:home' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="font-size: 10pt;">(Volver)</span></a></h3>
+              {{form.as_p}}
+              <input type="submit" class="btn btn-primary btn-block mt-5" value="Actualizar">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

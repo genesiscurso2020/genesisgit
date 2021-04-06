@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+
+{% load static %}
+
+<!-- <main> -->
+  <div class="container login">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-7 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos">
+          <div class="col datos-registration ">
+            {% if 'registro_correcto' in request.GET %}
+              <p style="color: green; font-size: 10pt">El usuario fue registrado correctamente, puede iniciar la sesion</p>
+            {% endif %}
+            <form action="" method="post">{% csrf_token %}
+              {% if form.non_field_errors %}
+                <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+              {% endif %}
+              <h3 class="mb-4">Iniciar sesion&nbsp;&nbsp;<a href="{% url 'core:home' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="font-size: 10pt;">(Volver)</span></a></h3>
+              <!-- <h3 class="mb-5">Iniciar sesion</h3> -->
+              <input type="text" name="username" autofocus maxlength="254" required
+              id="id_username" class="form-control input" placeholder="Nombre de usuario"/>
+              <input type="password" name="password" required
+              id="id_password" class="form-control input" placeholder="Contraseña"/>
+              <p class="boton">
+                <input type="submit" class="btn btn-primary btn-block" value="Acceder">
+              </p>
+            </form>
+            <!-- Olvido de contrasenia -->
+            <p class="helptext">
+              Olvido su password?, Puede restaurarlo presionando este <a href="{% url 'password_reset' %}">enlace</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- </main> -->
+
+{% endblock %}
+<!-- <main role="main">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-9 mx-auto mb-5">
+        <form action="" method="post">{% csrf_token %}
+          <h3 class="mb-4">Iniciar sesión</h3>
+          {% if form.non_field_errors %}
+            <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+          {% endif %}
+          <p>
+            <input type="text" name="username" autofocus maxlength="254" required
+              id="id_username" class="form-control" placeholder="Nombre de usuario"/>
+          </p>
+          <p>
+            <input type="password" name="password" required
+              id="id_password" class="form-control" placeholder="Contraseña"/>
+          </p>
+          <p><input type="submit" class="btn btn-primary btn-block" value="Acceder"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</main> -->

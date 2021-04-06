@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<style>.errorlist{color:red;}</style>
+{% if error == '' %}
+  <div class="container registro">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos">
+          <div class="col datos-registration border">
+            <h3>Modificacion del Texto <a href="{% url 'proyectos:lista_texto' %}?criterio={{criterio}}&duplica=0" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green; font-size: 8pt;">(volver)</span></a></h3>
+            
+            <form class="mt-4" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+              {% if 'ok' in request.GET %}
+                <p style="color:red;">(Registro modificado correctamente)</p>
+              {% endif %}
+              {% include 'core/includes/formulario_proyectotexto.html'%}
+              <div class="row">
+                <div class="col mb-5">
+                  <input type="submit" class="btn btn-primary btn-block mt-3 mb-4" value="Confirmar">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  {% include 'core/includes/esquema_texto.html'  %}
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+{% endblock %}
+

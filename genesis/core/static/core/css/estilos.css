@@ -1,0 +1,53 @@
+body {
+
+/* Ubicación de la imagen */
+
+/* Estamos en static y le aniadimos core/img para conseguir la imagen  */
+background-image: url(../../core/img/PaginaInicio.png);
+
+/* Para dejar la imagen de fondo centrada, vertical y
+
+horizontalmente */
+
+background-position: center center;
+
+/* Para que la imagen de fondo no se repita */
+
+background-repeat: no-repeat;
+
+/* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
+
+background-attachment: fixed;
+
+/* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
+
+background-size: cover;
+/*background-size: 300px 100px;*/
+
+/* Se muestra un color de fondo mientras se está cargando la imagen
+
+de fondo o si hay problemas para cargarla */
+
+background-color: #66999;
+
+}
+
+
+@media screen and (max-width: 575px) {
+	header .menu {
+		padding: 15px 15px 0 15px;
+	}
+
+	main .contenido-principal .publicacion .foto {
+		padding-right: 0;
+	}
+
+	main .contenido-principal .publicacion .foto a {
+		width: 40px;
+		height: 40px;
+	}
+
+	main .contenido-principal .publicar .foto {
+		display: none;
+	}
+}

@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block cuerpo %}
+
+{% if error == '' %}
+<div class="container lista-personalizacion">
+	<div class="row mb-3">
+		<div class="col">
+			<h3>Lista de Textos&nbsp;&nbsp;<a href="{% url 'proyectos:lista' %}?criterio={{criterio}}&duplica=0" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green;font-size: 8pt;">(volver)</span></a></h3>
+		</div>
+	</div>
+	<div class="row fila-columnas-personalizacion">
+		<div class="col-1">
+			<b>Titulo</b>
+		</div>
+		<div class="col-9">
+			<b>Texto</b>
+		</div>
+	</div>
+	{% for texto in lista_texto %}
+		<div class="row font_lista mt-2 fila-datos-personalizacion border-bottom">
+			<div class="col-1">
+				{{texto.titulo}}
+			</div>
+			<div class="col-8">
+				{{texto.texto}}
+			</div>
+			<div class="col-1 font_texto_personaliza">
+				<a href="{% url 'proyectos:procesa_texto' %}?criterio={{criterio}}&id={{texto.id}}" style="color:blue;">procesar</a>
+			</div>
+			<div class="col-1 font_texto_personaliza">
+				<a href="{% url 'proyectos:editar_texto' texto.id %}?criterio={{criterio}}" style="color:blue;">editar</a>
+			</div>
+			<div class="col-1 font_texto_personaliza">
+				<a href="{% url 'proyectos:borrar_texto' texto.id %}?criterio={{criterio}}" style="color:blue;">borrar</a>
+			</div>
+		</div>
+	{% endfor %}
+		<div class="row mb-5"></div>
+      <div class="row fila-nuevo-pais mt-3 mb-3">
+        <div class="col">
+          <a class="btn btn-block btn-primary" href="{% url 'proyectos:crear_texto' %}?criterio={{criterio}}">Nuevo registro</a>
+        </div>
+      </div>		
+</div>
+<!-- 	<div class="container mt-5">
+		<div class="row ml-1">
+			<a class=" font_link_nuevo_cuenta" href="{% url 'personalizacion:crear' %}?aplicacion_id={{aplicacion.id}}">Nuevo tag de Personalizacion</a>
+		</div> -->
+	</div>	<!--  -->
+
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<style>.errorlist{color:red;}</style>
+{% if error == '' %}
+  <div class="container registro">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos">
+          <div class="col datos-registration border">
+            <h3>Modificacion de Personalizacion <a href="{% url 'personalizacion:home' %}?proyecto_id={{proyecto.id}}&ingreso=0" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">volver</span></a></h3>
+
+            <div class="row mt-3 ">
+                <div class="col-12">
+                  <span class="">Aplicacion:&nbsp;</span><span class="text-danger">{{personaliza.aplicacion}}</span>
+                </div>
+                <div class="col-12">
+                  <span class="">Archivo:&nbsp;</span><span class="text-danger">{{personaliza.archivo}}</span>
+                </div>
+                <div class="col-12">
+                  <span class="">Tag:&nbsp;</span><span class="text-danger">{{personaliza.tag}}</span>
+                </div>
+            </div>
+
+            <form class="" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+              {% if 'ok' in request.GET %}
+                <p style="color:red;">(Registro modificado correctamente)</p>
+              {% endif %}
+                {% include 'core/includes/formulario_personaliza.html'%}
+              <input type="submit" class="btn btn-primary btn-block mt-5" value="Confirmar">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+{% endblock %}

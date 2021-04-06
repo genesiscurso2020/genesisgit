@@ -1,0 +1,93 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+
+{% if error == '' %}
+	<div class="container" style="padding-top: 140px;">
+		<div class="row mb-3">
+			<div class="col-12 " style="height: {{altoencabezado}}" id="encabezado">
+				<div class="row fila-enizcede mb-5 " id="fila-enizcede" style="margin-bottom: 9px; height: {{altoencabezado}}">
+					{% if numerocolumnaenizquierda > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnaenizquierda&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnaenizquierda}} border " id="enizquierda" style="height: {{altoencabezado}}; background: {{colorcolumnaenizquierda}}">
+					</a>
+					{% endif %}
+					{% if numerocolumnalogo > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnalogo&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnalogo}} border " id="logo" style="height: {{altoencabezado}}; background: {{colorcolumnalogo}} ">
+					</a>
+					{% endif %}
+					{% if numerocolumnatitulo > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnatitulo&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnatitulo}} border " id="titulo" style="height: {{altoencabezado}}; background: {{colorcolumnatitulo}}">
+					</a>
+					{% endif %}
+					{% if numerocolumnalogin > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnalogin&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnalogin}} border" id="login" style="height: {{altoencabezado}}; background: {{colorcolumnalogin}} ">
+					</a>
+					{% endif %}
+					{% if numerocolumnaenderecha > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnaenderecha&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnaenderecha}} border" id="enderecha" style="height: {{altoencabezado}}; background: {{colorcolumnaenderecha}}">
+					</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-12 " style="height: {{altobume}}" id="bume">
+				<div class="row" style="margin-bottom:9px; height: {{altobume}}">
+					{% if numerocolumnabumeizquierda > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnabumeizquierda&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnabumeizquierda}} border" style="height: {{altobume}}; background: {{colorcolumnabumeizquierda}}">
+					</a>
+					{% endif %}
+					{% if numerocolumnabusqueda > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnabusqueda&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnabusqueda}} border" style="height: {{altobume}}; background: {{colorcolumnabusqueda}} ">
+					</a>
+					{% endif %}
+					{% if numerocolumnamenu > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnamenu&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnamenu}} border" style="height: {{altobume}}; background: {{colorcolumnamenu}}">
+					</a>
+					{% endif %}
+					{% if numerocolumnabumederecha > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnabumederecha&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnabumederecha}} border" style="height: {{altobume}}; background: {{colorcolumnabumederecha}}">
+					</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-12 " style="height: {{altomedio}}" id="medio">
+				<div class="row" style="margin-bottom:9px; height: {{altomedio}}">
+					{% if numerocolumnamedioizquierda > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnamedioizquierda&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnamedioizquierda}} border" style="height: {{altomedio}}; background: {{colorcolumnamedioizquierda}}">
+					</a>
+					{% endif %}
+					{% if numerocolumnamediocentro > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnamediocentro&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnamediocentro}} border" style="height: {{altomedio}}; background: {{colorcolumnamediocentro}} ">
+					</a>
+					{% endif %}
+					{% if numerocolumnamedioderecha > 0 %}
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnamedioderecha&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col-{{numerocolumnamedioderecha}} border" style="height: {{altomedio}}; background: {{colorcolumnamedioderecha}}">
+					</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3"></div>
+			<div class="col-12 " style="height: {{altopie}};" id="pie">
+				<div class="row" style="height: {{altopie}}" >
+					<a href="{% url 'crear:paleta' %}?proyecto_id={{proyecto.id}}&div=colorcolumnapie&configuracion_proyecto=proyecto&red={{red}}&green={{green}}&blue={{blue}}" class="col border" style="{{altopie}}; background: {{colorcolumnapie}}" >
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="row mb-5 mt-5 text-center">
+			<div class="col">
+				Volver a &nbsp;&nbsp;
+				<a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a>
+			</div>
+		</div>
+	</div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+
+{% endblock %}

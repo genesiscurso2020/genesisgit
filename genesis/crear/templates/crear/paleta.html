@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+
+{% if error == '' %}
+    <div class="row" style="margin-top: 140px;"></div>
+    <div class="row mt-5" >
+      <div class="col">
+        {% for color in l1 %}
+                <a href="{% url 'crear:colores' %}?proyecto_id={{proyecto.id}}&div={{div}}&color={{color.0}}&configuracion_proyecto=proyecto" >
+                <div id="hexagono3" class="color-example" style="height: 5em;margin: {{color.2}}em 0 0 {{color.1}}em; overflow: hidden;transform: rotate(120deg);visibility: hidden; width: 2em;">
+                  <div id="hexagono3-1" class="color-example" style="height: 100%;overflow: hidden; transform: rotate(-60deg); width: 100%;">
+                      <div id="hexagono3-2" class="color-example" style="height: 100%; transform: rotate(-60deg); visibility: visible ; width: 100%; background: #{{color.0}};">
+                      </div>
+                    </div>
+                </div>
+              </a>
+        {% endfor %}
+      </div>
+      <div class="col">
+        {% for color in l2 %}
+                <a href="{% url 'crear:colores' %}?proyecto_id={{proyecto.id}}&div={{div}}&color={{color.0}}&configuracion_proyecto=proyecto" >
+                <div id="hexagono3" class="color-example" style="height: 5em;margin: {{color.2}}em 0 0 {{color.1}}em; overflow: hidden;transform: rotate(120deg);visibility: hidden; width: 2em;">
+                  <div id="hexagono3-1" class="color-example" style="height: 100%;overflow: hidden; transform: rotate(-60deg); width: 100%;">
+                      <div id="hexagono3-2" class="color-example" style="height: 100%; transform: rotate(-60deg); visibility: visible ; width: 100%; background: #{{color.0}};">
+                      </div>
+                    </div>
+                </div>
+              </a>
+        {% endfor %}
+      </div>
+    </div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+
+{% endblock %}

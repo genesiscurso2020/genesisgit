@@ -1,0 +1,162 @@
+{% extends 'core/base.html' %}
+{% block menu %}
+	{% include 'core/includes/menu_que_es_genesis.html'%}
+{% endblock %}
+
+{% block cuerpo %}
+{% if error == '' %}
+<div class="container desplegar-precios">
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-10">
+			<div class="container mt-5 ">
+				<div class="row mb-5">
+					<div class="col-6 ">
+						<div class="container border">
+							<div class="row mt-3">
+								<div class="col mr-1 ml-1 text-center titulo_precio bg-secondary">
+									Uso gratuito de Genesis
+								</div>
+							</div>
+							<div class="row text-secondary mt-2 texto_opcion_precio">
+								<div class="col ">
+									Esta es la versión de completa de Génesis y usted la puede utilizar libremente por espacio de un mes a partir de la solicitud, después de ese período quedará deshabilitada y solamente quedarán habilitadas las opciones de compra. Esperamos que en ese período de tiempo usted pueda ver las ventajas de utilizar una herramienta que le permita generar aplicaciones OLTP de forma rápida y sobre todo segura.
+								</div>
+							</div>
+							<div class="row mt-2 border-top"></div>
+							<div class="row mt-2 mb-3">
+								<div class="col font-weight-bold text-center">
+							        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+							            <div class="text-center">
+							            	{% if puede == 's' %}
+								              	<input type="submit" {% if puede == False %}disabled{% endif %} class="btn btn-primary btn-block mt-3" value="Comenzar a utilizar" />
+								            {% elif expira != 'Expirada' %}
+								            	<p>Su licencia gratuita tiene vigencia hasta: {{expira}}</p>
+								            {% else %}
+								            	<p>Su licencia gratuita ha expirado</p>
+											{% endif %}
+							            </div>
+							        </form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="container border">
+							<div class="row mt-3">
+								<div class="col ml-1 mr-1 text-center titulo_precio bg-secondary">
+									Licencias de uso
+								</div>
+							</div>
+							<div class="row text-secondary mt-2 mb-3 texto_opcion_precio">
+								<div class="col ">
+									Aqui presentamos tres opciones para el uso de Génesis que son la opción trimestral, semestral y anual. En cada una de ellas el usuario contará con el mantenimiento y la atención a las consultas que pudiera hacernos para lo que tendrá una línea exclusiva en la que recibiremos las consultas y sobre la que enviaremos nuestras respuestas o sugerencias.
+								</div>
+							</div>
+							<!-- <div class="row mt-2 border-top"></div> -->
+
+
+							<div class=" border">
+								<div class="row mt-2 ">
+									<div class="col titulo_opcion_precio text-center ">
+										OPCION TRIMESTRAL
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col texto_opcion_precio text-center">
+										Usted paga por el uso de Génesis durante tres meses.
+									</div>
+								</div>
+								<div class="row mt-3 ">
+									<div class="col text-center precio">
+										XX$/mes
+									</div>
+								</div>
+								<div class="row mt-2 mb-3">
+									<div class="col text-center">
+<!-- 										<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+										<input type="hidden" name="cmd" value="_s-xclick">
+										<input type="hidden" name="hosted_button_id" value="EYB95GEUAG5ZE">
+										<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+										<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+										</form> -->
+									</div>
+								</div>
+							</div>
+
+
+							<!-- <div class="row mt-2 border-top"></div> -->
+							<div class="border mt-3">
+								<div class="row mt-2">
+									<div class="col titulo_opcion_precio text-center ">
+										OPCION SEMESTRAL
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col texto_opcion_precio text-center">
+										Usted paga por el uso de Génesis durante seis meses.
+									</div>
+								</div>
+								<div class="row mt-3 ">
+									<div class="col text-center precio">
+										XX$/mes
+									</div>
+								</div>
+								<div class="row mt-2 mb-3">
+									<div class="col text-center">
+<!-- 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="hosted_button_id" value="JS3ZKLNLRX44S">
+	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+	</form> -->
+									</div>
+								</div>
+							</div>
+
+							<!-- <div class="row mt-2 border-top"></div> -->
+							<div class="border mt-3 mb-3">
+								<div class="row mt-2">
+									<div class="col titulo_opcion_precio  text-center ">
+										OPCION ANUAL
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col texto_opcion_precio text-center">
+										Usted paga por el uso de Génesis durante doce meses.
+									</div>
+								</div>
+								<div class="row mt-3 ">
+									<div class="col text-center precio">
+										XX$/mes
+									</div>
+								</div>
+								<div class="row mt-2 mb-3">
+									<div class="col text-center">
+<!-- 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="hosted_button_id" value="CD7LNBAXW6YTA">
+	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+	</form> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-1"></div>
+	</div>
+	<div class="row mb-5 mt-5 text-center">
+		<div class="col">
+			<a href="{% url 'core:home' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al inicio"><span style="color:green">Volver a inicio</span></a>
+		</div>
+	</div>
+</div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+
+{% endblock %}

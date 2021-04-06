@@ -1,0 +1,197 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+	
+<style>
+	.arriba-desde-abajo{
+		position: absolute;
+		top: 100%;
+		left: 50%;
+	}
+	.abajo-desde-abajo{
+		position: absolute;
+		top:100%;
+		left: 45%;
+	}
+	.derecha-desde-derecha{
+		position: absolute;
+		top:10%;
+		left: 0%;
+	}
+	.izquierda-desde-derecha{
+		position: absolute;
+		top:50%;
+		left: 0%;
+	}
+
+	.marcador-horizontal{
+		width: 10px;
+		height: 15px;
+	}
+	.marcador-vertical{
+		width: 15px;
+		height: 10px;
+	}
+/*div{
+        border: 1px solid black;
+    }
+    div#PanelIzquierda{
+        float: left;
+        width: 30%;
+    }
+    div#PanelDerecha{
+        float: left;
+        width: 50%;
+    }*/
+    
+    #login5 {
+    position: absolute;
+    width: 260px;
+    left: calc(100% - 600px);
+    background-color: rgba(50, 50, 50, 0.6);
+    padding: 20px;
+    }
+</style>
+
+<style>
+#pp{width:100px; height:300px; background-color:#F00}
+</style>
+<script>
+function medidas(id){
+	// alert('entro')
+  var panelIzquierda = document.getElementById("refe");
+	var divi = document.getElementById("divi");
+  // alert(panelIzquierda.href);
+  panelIzquierda.href = panelIzquierda.href + '&width=' + divi.offsetWidth + '&height=' + divi.offsetHeight + '&top=' + divi.offsetTop + '&left=' + divi.offsetLeft;
+  // alert(panelIzquierda.href);
+    return {w:document.getElementById(id).offsetWidth,h:document.getElementById(id).offsetHeight}
+}
+function cambia(a,col, row){
+	// alert('entro')
+  var ref = document.getElementById(a);
+  var columna = document.getElementById(col);
+  var fila = document.getElementById(row);
+  ref.href = ref.href + '&width=' + columna.offsetWidth + '&height=' + columna.offsetHeight + '&top=' + columna.offsetTop + '&left=' + columna.offsetLeft + '&filawidth=' + fila.offsetWidth  + '&filaheight=' + fila.offsetHeight  + '&filatop=' + fila.offsetTop  + '&filaleft=' + fila.offsetLeft  + '&flecha=' + a;
+}
+</script>
+<div id="pp"></div>
+	<a onclick="medidas('refe')" href="" id="refe2" >envio2</a>
+	<a onclick="medidas('refe')" id="refe" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}">envio</a>
+<form style="margin-top: 140px;">
+<input name="Bot&oacute;n" type="button" value="obtener ancho" onclick="alert(medidas('divi').w)" />
+<input name="Bot&oacute;n" type="button" value="obtener alto" onclick="alert(medidas('divi').h)" />
+</form>
+
+<script>
+	function ajustarTamanio(){
+  var panelIzquierda = document.getElementById("PanelIzquierda");
+  var panelDerecha = document.getElementById("PanelDerecha");
+  
+  console.log(panelIzquierda.clientWidth);
+  console.log(panelIzquierda.clientHeight);
+  
+  console.log(panelDerecha.clientWidth);
+  console.log(panelDerecha.clientHeight);
+}
+</script>
+
+<div id="login5" class="login">
+    <h3>Login</h3>
+
+    // code 
+
+</div>
+
+
+
+<div class="container mt-3" id="PanelIzquierda" style="margin-top: 140px" >
+	<div class="row" style="height: 300px">
+		<div id='divi' class="col-3 border">
+			<a href=""><img class="arriba-desde-abajo" src="{% static 'core/img/arriba.png' %}" width="15px" height="10px" alt=""></a>
+			<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}" width="15px" height="10px" alt=""></a>
+			<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}" width="10px" height="15px" alt=""></a>
+			<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}" width="10px" height="15px" alt=""></a>
+		</div>
+		<div class="col-6"></div>
+		<div class="col-3"></div>
+	</div>
+</div>
+
+<div class="container mt-3" id="PanelIzquierda" style="margin-top: 140px" >
+	<div class="row" style="height: 200px">
+		<div id='divi' class="col-3 border">
+			<a href=""><img class="arriba-desde-abajo" src="{% static 'core/img/arriba.png' %}" alt=""></a>
+			<a href=""><img class="abajo-desde-abajo" src="{% static 'core/img/abajo.png' %}" width="15px" height="10px" alt=""></a>
+			<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}" width="10px" height="15px" alt=""></a>
+			<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}" width="10px" height="15px" alt=""></a>
+		</div>
+		<div class="col-6"></div>
+		<div class="col-3"></div>
+	</div>
+</div>
+
+	<main class="container mt-5 mb-5">
+		<div class="row fila-enizcede mb-2" id="fila-enizcede" style="height: 200px">
+			<div class="col-1 columna-enizquierda border border-primary " id="columna-enizquierda" style="background-color: {{color}};">
+				<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}" id="fe1" onclick="cambia('fe1','columna-enizquierda','fila-enizcede')"><img class="arriba-desde-abajo" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt=""></a>
+			</div>
+			<div class="col-12 d-none d-md-block col-md-1 columna-logo border border-secondary bg-secondary" style="background-color: transparent;">
+				<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+				<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+			</div>
+			<div class="col-12 col-md-4 columna-titulo border border-danger bg-danger" style="background-color: transparent;">
+				<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+				<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+			</div>
+			<div class="col-12 d-none d-md-block col-md-3 columna-login border border-warning" style="background-color: transparent;">
+				<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+				<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+			</div>
+			<div class="col-12 d-none d-md-block col-md-3 columna-enderecha border border-dark" style="background-color: transparent;">
+				<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+				<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+			</div>
+		</div>
+		<div class="row fila-bume mb-2" style="height: 40px">
+			<div class="col-12 d-none d-md-block col-md-1 columna-bume-izquierda border border-dark" style="background-color: transparent;">
+				<a href=""><img class="arriba-desde-abajo" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt=""></a>
+			</div>
+			<div class="col-12 col-md-4 columna-busqueda border border-dark" style="background-color: transparent;">
+				<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+				<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+			</div>
+			<div class="col-12 col-md-5 columna-menu border border-dark" style="background-color: transparent;">
+				<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+				<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+			</div>
+			<div class="col-12 d-none d-md-block col-md-2 columna-bume-derecha border border-dark" style="background-color: transparent;">
+				<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+				<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+			</div>
+		</div>
+		<div class="row fila-medio mb-2 " style="height: 200px">
+			<div class="col-2 columna-medioizquierda border border-dark" style="background-color: transparent; z-index:2;">
+				<a href=""><img class="arriba-desde-abajo" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt="" ></a>
+				<!-- Personaliza medio izquierda -->
+			</div>
+			<div class="col-8 columna-mediocentro border border-dark" style="z-index: 100;background-color: transparent;">
+				<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+				<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+			</div>
+			<div class="col-2 columna-medioderecha border border-dark" style="background-color: transparent;">
+				<a href=""><img class="derecha-desde-derecha" src="{% static 'core/img/derecha.png' %}"  width="10px" height="15px" alt=""></a>
+				<a href=""><img class="izquierda-desde-derecha" src="{% static 'core/img/izquierda.png' %}"  width="10px" height="15px" alt=""></a>
+				<!-- Personaliza medio derecha -->
+			</div>
+		</div>
+		<div class="row fila-pie border border-dark" style="height: 50px">
+			<div class="col columna-pie" style="background-color: transparent;">
+				<a href=""><img class="arriba-desde-abajo" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt="" style="z-index: 100"></a>
+			</div>
+		</div>
+	</main>
+
+
+
+{% endblock %}

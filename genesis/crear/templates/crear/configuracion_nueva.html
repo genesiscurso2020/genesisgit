@@ -1,0 +1,245 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+
+<style>
+	.arriba{
+		position: absolute;
+		top: 100%;
+		left: 40%;
+	}
+	.abajo{
+		position: absolute;
+		top:100%;
+		left: 60%;
+	}
+	.derecha{
+		position: absolute;
+		top:10%;
+		left: 0%;
+	}
+	.izquierda{
+		position: absolute;
+		top:50%;
+		left: 0%;
+	}
+	.derechaf{
+		position: absolute;
+		top:10%;
+		left: 100%;
+	}
+	.izquierdaf{
+		position: absolute;
+		top:50%;
+		left: 100%;
+	}
+  .derechad{
+    position: absolute;
+    top:1px;
+    /*left: 100%;*/
+  }
+  .izquierdad{
+    position: absolute;
+    top:30%;
+    /*left: 100%;*/
+  }
+</style>
+
+<script>
+function AltoEncabezado(href,current,direccion,flecha) {
+  var href = document.getElementById(href);
+  ref = '{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}';
+  var current = document.getElementById(current);
+  href.href = ref + '&height=' + current.offsetHeight + '&direccion=' + direccion + '&flecha=' + flecha + '&configuracion_proyecto=proyecto';
+}
+function AnchoEncabezadoIzquierda(href,direccion,flecha) {
+  var href = document.getElementById(href);
+  ref = '{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}';
+  href.href = ref + '&direccion=' + direccion + '&flecha=' + flecha  + '&configuracion_proyecto=proyecto';
+}
+function Ancho(href,direccion,flecha) {
+  var href = document.getElementById(href);
+  ref = '{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}';
+  href.href = ref + '&direccion=' + direccion + '&flecha=' + flecha  + '&configuracion_proyecto=proyecto';
+}
+
+function Aplica(href,seccion){
+	var valor = document.getElementById(href).value;
+	// alert(seccion)
+	var pagina = 'http://127.0.0.1:8000/crear/conf_base_nueva?proyecto_id={{proyecto.id}}&seccion='+seccion+'&valor='+valor;
+	window.location.href = pagina;
+	// alert(pagina)
+}
+
+</script>
+
+
+{% if error == '' %}
+	
+	<div class="container" style="padding-top: 90px;" >
+
+		<div class="row">
+			<div class="col-3">
+				<div class="row mb-2">Fila de Logo y Titulo</div>
+                <div class="row mb-1" >
+                    <div class="col-7 controles-label">Alto de la fila</div>
+                    <div class="col-5 controles_control" >
+                      <input type="number" name="enfila" value="{{enfila}}" class="form-control font_control" required id="id_enfila" onchange="Aplica('id_enfila','enfila')" style="height: 20px;font-size: 8pt">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna izquierda</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="enizquierda" value="{{anchoencabezadoizquierda}}" class="form-control font_control" required id="id_enizquierda"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_enizquierda','enizquierda')">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna logo</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="enlogo" value="{{anchologo}}" class="form-control font_control" required id="id_enlogo"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_enlogo','enlogo')">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna titulo</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="entitulo" value="{{anchotitulo}}" class="form-control font_control" required id="id_entitulo"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_entitulo','entitulo')">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna adicional</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="enlogin" value="{{anchologin}}" class="form-control font_control" required id="id_enlogin"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_enlogin','enlogin')">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna derecha</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="enderecha" value="{{anchoencabezadoderecha}}" class="form-control font_control" required id="id_enderecha"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_enderecha','enderecha')">
+                    </div>
+                 </div>
+				<div class="row mb-2 mt-2">Fila de Busqueda y Menu</div>
+                <div class="row mb-1" >
+                    <div class="col-7 controles-label">Alto de la fila</div>
+                    <div class="col-5 controles_control" >
+                      <input type="number" name="bumefila" value="{{bumefila}}" class="form-control font_control" required id="id_bumefila" onchange="Aplica('id_bumefila','bumefila')" style="height: 20px;font-size: 8pt">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna izquierda</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="bumeizquierda" value="{{anchobumeizquierda}}" class="form-control font_control" required id="id_bumeizquierda"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_bumeizquierda','bumeizquierda')">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna busqueda</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="bumebusqueda" value="{{anchobusqueda}}" class="form-control font_control" required id="id_bumebusqueda"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_bumebusqueda','bumebusqueda')">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna Menu</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="bumemenu" value="{{anchomenu}}" class="form-control font_control" required id="id_bumemenu"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_bumemenu','bumemenu')">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna derecha</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="bumederecha" value="{{anchobumederecha}}" class="form-control font_control" required id="id_bumederecha"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_bumederecha','bumederecha')">
+                    </div>
+                 </div>
+				<div class="row mb-2 mt-2">Fila Central</div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna izquierda</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="cenizquierda" value="{{anchomedioizquierda}}" class="form-control font_control" required id="id_cenizquierda"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_cenizquierda','cenizquierda')">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna central</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="cencentro" value="{{anchomediocentro}}" class="form-control font_control" required id="id_cencentro"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_cencentro','cencentro')">
+                    </div>
+                 </div>
+                 <div class="row  mb-1" >
+                    <div class="col-7 controles-label">Columna derecha</div>
+                    <div class="col-5 controles_control">
+                      <input type="number" name="cenderecha" value="{{anchomedioderecha}}" class="form-control font_control" required id="id_cenderecha"  style="height: 20px;font-size: 8pt" onchange="Aplica('id_cenderecha','cenderecha')">
+                    </div>
+                 </div>
+				<div class="row mb-2">Fila del pie</div>
+                <div class="row mb-1" >
+                    <div class="col-7 controles-label">Alto de la fila</div>
+                    <div class="col-5 controles_control" >
+                      <input type="number" name="piefila" value="{{piefila}}" class="form-control font_control" required id="id_piefila" onchange="Aplica('id_piefila','piefila')" style="height: 20px;font-size: 8pt">
+                    </div>
+                 </div>			
+            </div>
+            <div class="col-1"></div>
+			<div class="col-8 ">
+				<!-- diagrama -->
+				<div class="row mb-5"></div>
+				<div class="row mb-{{separacion}}">
+					<!-- logo, titulo -->
+					{% if anchoencabezadoizquierda > 0 %}
+						<div class="col-{{anchoencabezadoizquierda}} border" style="height: {{enfila}}px"></div>
+					{% endif %}
+					{% if anchologo > 0 %}
+						<div class="col-{{anchologo}} border"  style="height: {{enfila}}px"></div>
+					{% endif %}
+					{% if anchotitulo > 0 %}
+						<div class="col-{{anchotitulo}} border"  style="height: {{enfila}}px"></div>
+					{% endif %}
+					{% if anchologin > 0 %}
+						<div class="col-{{anchologin}} border"  style="height: {{enfila}}px"></div>
+					{% endif %}
+					{% if anchoencabezadoderecha > 0 %}
+						<div class="col-{{anchoencabezadoderecha}} border"  style="height: {{enfila}}px"></div>
+					{% endif %}
+				</div>
+				<div class="row mb-2">
+					<!-- busqueda, menu -->
+					{% if anchobumeizquierda > 0 %}
+						<div class="col-{{anchobumeizquierda}} border"  style="height: {{bumefila}}px"></div>
+					{% endif %}
+					{% if anchobusqueda > 0 %}
+						<div class="col-{{anchobusqueda}} border"  style="height: {{bumefila}}px"></div>
+					{% endif %}
+					{% if anchomenu > 0 %}
+						<div class="col-{{anchomenu}} border"  style="height: {{bumefila}}px"></div>
+					{% endif %}
+					{% if anchobumederecha > 0 %}
+						<div class="col-{{anchobumederecha}} border"  style="height: {{bumefila}}px"></div>
+					{% endif %}
+				</div>
+				<div class="row mb-2">
+					<!-- central -->
+					{% if anchomedioizquierda > 0 %}
+						<div class="col-{{anchomedioizquierda}} border"  style="height: 200px"></div>
+					{% endif %}
+					{% if anchomediocentro > 0 %}
+						<div class="col-{{anchomediocentro}} border"  style="height: 200px"></div>
+					{% endif %}
+					{% if anchomedioderecha > 0 %}
+						<div class="col-{{anchomedioderecha}} border"  style="height: 200px"></div>
+					{% endif %}
+				</div>
+				<div class="row">
+					<div class="col-12 border" style="height: {{piefila}}px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-5 mb-5 text-center">
+		<div class="col">
+			Volver a &nbsp;&nbsp;
+			<a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a>
+		</div>
+	</div>
+
+	</div>
+{% else %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,964 @@
+{% load static %}
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <div class="row mt-5 mb-4">
+                    <div class="col">
+                      <span class="controles-texto-grupo">Datos Generales</span>
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Nombre del Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.nombre}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Descripcion del Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.descripcion}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Modelo Padre</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.padre}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Nombre para identificar al modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.nombreself}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Propiedad que identifica el borrado</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.nombreborrar}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Aplicacion que contiene al Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.aplicacion}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Texto para la opcion de Menu</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.textoopcionmenu}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    {% include 'core/includes/esquema.html' with titulo='Imagen en menu' target='imagenmenu' imagen='core/img/esquema_imagenmenu.png' %}
+                  </div>
+                  {% if modelo.imagenmenu %}
+                    <img src="{{modelo.imagenmenu.url}}" width="50px" height="50px" alt="">
+                  {% endif %}
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.imagenmenu}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">ToolTip</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.tooltip}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Orden en la generacion</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.ordengeneracion}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">El Modelo esta en el menu:</div>
+                    <div class="col controles_control">
+                      {{form.modeloenmenu}}
+                    </div>
+                  </div>
+<!--                   <div class="row mb-4" >
+                    <div class="col-10 controles-label ">El Modelo no esta en la base de datos:</div>
+                    <div class="col controles_control">
+                      {{form.sinbasedatos}}
+                    </div>
+                  </div> -->
+                </div>
+                <div class="col-6">
+  	              <div class="row mt-5 mb-4">
+  	                <div class="col">
+  	                  <span class="controles-texto-grupo">Diagrama para lista de Modelo</span>
+  	                </div>
+  	              </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Titulo de la lista del Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.titulolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Font del titulo de la lista del Modelo</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.fonttitulolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Color del titulo de la lista del Modelo</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colortitulolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Color de fondo del titulo de la lista del Modelo</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colorfondotitulolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Alto del titulo de la lista del Modelo</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.altotitulolista}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">El titulo esta en mayusculas:</div>
+                    <div class="col controles_control">
+                      {{form.mayusculastitulolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Justificacion horizontal del titulo</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.justificacionhorizontaltitulolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Justificacion vertical del titulo</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.justificacionverticaltitulolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Comentario de la lista</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.comentariolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Font comentario de la lista</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.fontcomentariolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Color comentario de la lista</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colorcomentariolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Color fondo comentario de la lista</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colorfondocomentariolista}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Las columnas estan en mayusculas:</div>
+                    <div class="col controles_control">
+                      {{form.mayusculascolumnas}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Altura de columna</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.altocolumnas}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Color columnas de la lista</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colorcolumnaslista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Color fondo columnas de la lista</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colorfondocolumnaslista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Font de columnas de la lista</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.fontcolumnaslista}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Las columnas tienen borde:</div>
+                    <div class="col controles_control">
+                      {{form.columnaslistaconborde}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Font del texto de la lista</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.fonttextolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Color del texto de la lista</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colortextolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Color fondo del texto de la lista</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colorfondotextolista}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Texto de editar borrar</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.textoeditarborrar}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Font de texto de editar borrar</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.fonteditarborrar}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    <div class="col controles-label ">Color de texto de editar borrar</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.coloreditarborrar}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Texto del link de Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.textolinknuevomodelo}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Font del link de Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.fontlinknuevomodelo}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color del link de Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorlinknuevomodelo}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color del boton del link de Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorbotonlinknuevomodelo}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Nuevo Modelo en botón:</div>
+                    <div class="col controles_control">
+                      {{form.linknuevomodelo}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">El Modelo tiene buscador de lista:</div>
+                    <div class="col controles_control">
+                      {{form.buscadorlista}}
+                    </div>
+                  </div>
+                  <div class="row mt-5 mb-4">
+                    <div class="col">
+                      <span class="controles-texto-grupo">Datos para los reportes</span>
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Pagina para el reporte</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.reportsize}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Orientacion del reporte</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.reportorientation}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Posicion horizontal del Titulo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.titulox}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Posicion horizontal de la Fecha</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.fechax}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Punto horizontal inicial de la linea de columnas</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.lineaix}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Punto horizontal final de la linea de columnas</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.lineafx}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Grosor de la linea de columnas</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.grosorlinea}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Posicion horizontal inicial de los datos</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.datoinicialx}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">La identacion es automatica:</div>
+                    <div class="col controles_control">
+                      {{form.identacionautomatica}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="row mt-5 mb-4">
+                    <div class="col">
+                      <span class="controles-texto-grupo">Diagrama para insertar Modelos</span>
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Titulo del formulario de Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.tituloinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Font del titulo del formulario de Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.fonttituloinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color del titulo de formulario de Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colortituloinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color de fondo de titulo de Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorfondotituloinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color de fondo de fila titulo de Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colorfondofilatituloinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Altura de fila de titulo de Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.altofilatituloinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Justificacion vertical del titulo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.justificacionverticaltituloinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Justificacion horizontal del titulo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.justificacionhorizontaltituloinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Comentario formulario Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.comentarioinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Font Comentario formulario Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.fontcomentarioinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color Comentario formulario Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorcomentarioinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color fondo Comentario formulario Nuevo Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorfondocomentarioinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    {% include 'core/includes/esquema.html' with titulo='Columnas izquierda formulario Nuevo Modelo' target='numerocolumnasizquierdainserta' imagen='core/img/esquema_numerocolumnasizquierdainserta.png' %}
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnasizquierdainserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    {% include 'core/includes/esquema.html' with titulo='Columnas centro formulario Nuevo Modelo' target='numerocolumnasmodeloinserta' imagen='core/img/esquema_numerocolumnasmodeloinserta.png' %}
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnasmodeloinserta}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    {% include 'core/includes/esquema.html' with titulo='Columnas derecha formulario Nuevo Modelo' target='numerocolumnasderechainserta' imagen='core/img/esquema_numerocolumnasderechainserta.png' %}
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnasderechainserta}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="row mt-5 mb-4">
+                    <div class="col">
+                      <span class="controles-texto-grupo">Diagrama para actualizar Modelos</span>
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Titulo del formulario de Editar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.tituloupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Font del titulo del formulario de Editar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.fonttituloupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color del titulo de formulario de Editar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colortituloupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color de fondo de titulo de editar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorfondotituloupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color de fondo de fila titulo de Editar Modelo</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colorfondofilatituloupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Altura de fila de titulo de Editar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.altofilatituloupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Justificacion vertical del titulo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.justificacionverticaltituloupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Justificacion horizontal del titulo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.justificacionhorizontaltituloupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Comentario formulario Editar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.comentarioupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Font Comentario formulario Editar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.fontcomentarioupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color Comentario formulario Editar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorcomentarioupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color fondo Comentario formulario Editar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorfondocomentarioupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    {% include 'core/includes/esquema.html' with titulo='Columnas izquierda formulario Editar Modelo' target='numerocolumnasizquierdaupdate' imagen='core/img/esquema_numerocolumnasizquierdaupdate.png' %}
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnasizquierdaupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    {% include 'core/includes/esquema.html' with titulo='Columnas centro formulario Editar Modelo' target='numerocolumnasmodeloupdate' imagen='core/img/esquema_numerocolumnasmodeloupdate.png' %}
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnasmodeloupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    {% include 'core/includes/esquema.html' with titulo='Columnas derecha formulario Editar Modelo' target='numerocolumnasderechaupdate' imagen='core/img/esquema_numerocolumnasderechaupdate.png' %}
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnasderechaupdate}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    {% include 'core/includes/esquema.html' with titulo='Columnas modelos hijo' target='numerocolumnashijosupdate' imagen='core/img/esquema_numerocolumnashijosupdate.png' %}
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnashijosupdate}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Los hijos son contiguos:</div>
+                    <div class="col controles_control">
+                      {{form.hijoscontiguos}}
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+              </div>
+              
+              <div class="row">
+                <div class="col">
+                  <div class="row mt-5 mb-4">
+                    <div class="col">
+                      <span class="controles-texto-grupo">Diagrama para Borrar Modelos</span>
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Titulo del formulario de Borrar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.tituloborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Font del titulo del formulario de Borrar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.fonttituloborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color del titulo de formulario de Borrar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colortituloborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color de fondo de titulo de Borrar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorfondotituloborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color de fondo de fila titulo de Borrar Modelo</div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col controles_control">
+                      {{form.colorfondofilatituloborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Altura de fila de titulo de Borrar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.altofilatituloborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Justificacion vertical del titulo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.justificacionverticaltituloborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Justificacion horizontal del titulo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.justificacionhorizontaltituloborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Comentario formulario Borrar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.comentarioborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Font Comentario formulario Borrar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.fontcomentarioborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color Comentario formulario Borrar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorcomentarioborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color fondo Comentario formulario Borrar Modelo</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorfondocomentarioborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Texto de borrado</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.textoborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Font Texto de borrado</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.fonttextoborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color Texto de borrado</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colortextoborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color fondo Texto de borrado</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorfondotextoborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Texto del boton de borrado</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.textobotonborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    {% include 'core/includes/esquema.html' with titulo='Columnas izquierda formulario Borrar Modelo' target='numerocolumnasizquierdaborra' imagen='core/img/esquema_numerocolumnasizquierdainserta.png' %}
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnasizquierdaborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    {% include 'core/includes/esquema.html' with titulo='Columnas centro formulario Borrar Modelo' target='numerocolumnasmodeloborra' imagen='core/img/esquema_numerocolumnasmodeloinserta.png' %}
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnasmodeloborra}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    {% include 'core/includes/esquema.html' with titulo='Columnas derecha formulario Borrar Modelo' target='numerocolumnasderechaborra' imagen='core/img/esquema_numerocolumnasderechainserta.png' %}
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnasderechaborra}}
+                    </div>
+                  </div>
+                </div>              
+                <div class="col">
+                  <div class="row mt-5 mb-4">
+                    <div class="col">
+                      <span class="controles-texto-grupo">Etiquetas</span>
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Los formularios son automaticos:</div>
+                    <div class="col controles_control">
+                      {{form.controlesautomaticos}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Font de Etiquetas</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.fontlabelmodelo}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Color Etiquetas</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.colorlabelmodelo}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Numero columnas para etiquetas</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnaslabels}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Numero columnas para controles</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.numerocolumnascontroles}}
+                    </div>
+                  </div>
+
+                  <div class="row mt-5 mb-4">
+                    <div class="col">
+                      <span class="controles-texto-grupo">Seguridad</span>
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Para listar debe ser administrador:</div>
+                    <div class="col controles_control">
+                      {{form.listastaff}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Para listar debe estar autenticado:</div>
+                    <div class="col controles_control">
+                      {{form.listalogin}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Para insertar debe ser administrador:</div>
+                    <div class="col controles_control">
+                      {{form.crearstaff}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Para Insertar debe estar autenticado:</div>
+                    <div class="col controles_control">
+                      {{form.crearlogin}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Para modificar debe ser administrador:</div>
+                    <div class="col controles_control">
+                      {{form.editarstaff}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Para modificar debe estar autenticado:</div>
+                    <div class="col controles_control">
+                      {{form.editarlogin}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Para borrar debe ser administrador:</div>
+                    <div class="col controles_control">
+                      {{form.borrarstaff}}
+                    </div>
+                  </div>
+                  <div class="row mb-4" >
+                    <div class="col-10 controles-label ">Para borrar debe estar autenticado:</div>
+                    <div class="col controles_control">
+                      {{form.borrarlogin}}
+                    </div>
+                  </div>
+                </div>              
+              </div>       
+
+

@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+
+	{% load static %}
+	<div class="container lista-proyectos">
+		<div class="row">
+			{% for proyecto in lista_proyectos %}
+				<div class="col-sm-4 col-md-3 d-flex justify-content-center">
+					<div class="card mb-4">
+						{% if proyecto.avatar %}
+							<img src="{{proyecto.avatar.url}}" class="card-img-top img-fluid" alt="">
+						{% endif %}
+						<div class="card-body">
+							<span class="card-title nombre-proyecto">{{proyecto.nombre}}</span>
+							<p class="card-text descripcion-proyecto mt-3"><small>{{proyecto.descripcion}}</small></p>
+							<div class="d-flex justify-content-between align-items-center">
+							</div>
+						</div>
+						<div class="card-footer lista-pie">
+							<div class="btn-group">
+								<a class="btn btn-sm btn-outline-primary" href="{% url 'proyectos:arbol' %}?proyecto_id={{ proyecto.id }}">Editar</a>
+								<a class="btn btn-sm btn-outline-secondary" href="{% url 'proyectos:borrar' proyecto.id %}?criterio={{criterio}}">Borrar</a>
+								<a class="btn btn-sm btn-outline-primary" href="{% url 'proyectos:lista' %}?criterio={{criterio}}&duplica=1&proyecto_id={{ proyecto.id }}">Duplicar</a>
+							</div>
+							<small class="text-muted text-dark">{{proyecto.created|date:"M d, Y"}}</small>
+						</div>
+					</div>
+				</div>			
+			{% endfor %}
+		</div>
+		<!-- Boton de adicionar proyecto -->
+		<div class="row mb-5">
+			<div class="col">
+				<a href="{% url 'proyectos:crear' %}?criterio={{criterio}}" class="btn btn-secondary">Proyecto nuevo</a>
+				<a href="{% url 'proyectos:lista_texto' %}?criterio={{criterio}}" class="btn btn-primary">Proyecto desde Texto</a>
+			</div>
+<!-- 			<div class="col-6">
+			</div> -->
+		</div>
+	</div>
+{% endblock %}	

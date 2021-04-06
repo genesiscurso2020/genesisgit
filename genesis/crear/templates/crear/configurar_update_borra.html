@@ -1,0 +1,242 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+
+<style>
+  .arriba{
+    position: absolute;
+    top: 100%;
+    left: 40%;
+  }
+  .abajo{
+    position: absolute;
+    top:100%;
+    left: 60%;
+  }
+  .derecha{
+    position: absolute;
+    top:10%;
+    left: 0%;
+  }
+  .izquierda{
+    position: absolute;
+    top:50%;
+    left: 0%;
+  }
+  .derechaf{
+    position: absolute;
+    top:10%;
+    left: 100%;
+  }
+  .izquierdaf{
+    position: absolute;
+    top:50%;
+    left: 100%;
+  }
+  .derechad{
+    position: absolute;
+    top:20%;
+    /*left: 100%;*/
+  }
+  .izquierdad{
+    position: absolute;
+    top:70%;
+    /*left: 100%;*/
+  }
+
+</style>
+
+<script>
+function AltoEncabezado(href,current,direccion,flecha) {
+  var href = document.getElementById(href);
+  ref = '{% url 'crear:conf_update_contiguo' %}?proyecto_id={{proyecto.id}}';
+  var current = document.getElementById(current);
+  href.href = ref + '&height=' + current.offsetHeight + '&direccion=' + direccion + '&flecha=' + flecha + '&configuracion_proyecto=modelo';
+}
+function AnchoEncabezadoIzquierda(href,direccion,flecha) {
+  var href = document.getElementById(href);
+  ref = '{% url 'crear:conf_update_contiguo' %}?proyecto_id={{proyecto.id}}';
+  href.href = ref + '&direccion=' + direccion + '&flecha=' + flecha  + '&configuracion_proyecto=modelo';
+}
+function Ancho(href,direccion,flecha) {
+  var href = document.getElementById(href);
+  ref = '{% url 'crear:conf_borra' %}?proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}';
+  href.href = ref + '&direccion=' + direccion + '&flecha=' + flecha  + '&configuracion_proyecto=modelo';
+}
+
+function Posicions(imagen,divimagen,imgmenos,imgmas,imgt) {
+  var img = document.getElementById(imagen);
+  var imgmenos = document.getElementById(imgmenos);
+  var imgmas = document.getElementById(imgmas);
+  var imgt = document.getElementById(imgt);
+  // var top = div.offsetTop ;
+  // var left = div.offsetWidth ;
+  // alert(divimagen);
+  // alert(img.id);
+  var left = 0;
+  imgt.style.visibility = 'hidden';
+  imgmenos.style.visibility = 'visible';
+  imgmas.style.visibility = 'visible';
+  switch (divimagen) {
+  case 0:
+    left = 0;
+    imgt.style.visibility = 'visible';
+    imgmenos.style.visibility = 'hidden';
+    imgmas.style.visibility = 'hidden';
+    break;
+  case 1:
+    left = 92;
+    break;
+  case 2:
+    left = 96;
+    break;
+  case 3:
+    left = 97;
+    break;
+  case 4:
+    left = 97;
+    break;
+  case 5:
+    left = 98;
+    break;
+  case 6:
+    left = 98;
+    break;
+  case 7:
+    left = 99;
+    break;
+  case 8:
+    left = 99;
+    break;
+  case 9:
+    left = 99;
+    break;
+  case 10:
+    left = 99;
+    break;
+  case 11:
+    left = 99;
+    break;
+  case 12:
+    left = 99;
+    break;
+}
+// alert(top);
+img.style.left = left + '%';
+  // if (divimagen >= 0 && divimagen <=4 ){
+  //   img.style.left = 91 + '%';  
+  // }
+  // alert(top);
+  // img.style.left = 95 + '%';
+  // img.style.left = left + 'px';
+  // img.style.position = 'relative';
+  // img.style = 'position:relative; top:' + top.toString() + 'px; right:' + left.toString() + 'px;';
+  // alert(img.style.left);
+}
+</script>
+
+{% if error == '' %}
+  <div class="container" style="padding-top: 140px;">
+    <div class="row mb-3">
+      <div class="col-12 " style=" height: {{altoencabezado}}" id="encabezado">
+        <div class="row fila-enizcede mb-5 " id="fila-enizcede" style="margin-bottom: 9px; height: {{altoencabezado}}">
+          <div class="col-{{numerocolumnaenizquierda}} border " id="enizquierda" style="height: {{altoencabezado}}; background: {{colorcolumnaenizquierda}}">
+          </div>
+          <div class="col-{{numerocolumnalogo}} border " id="logo" style="height: {{altoencabezado}}; background: {{colorcolumnalogo}} ">
+          </div>
+          <div class="col-{{numerocolumnatitulo}} border " id="titulo" style="height: {{altoencabezado}}; background: {{colorcolumnatitulo}}">
+          </div>
+          <div class="col-{{numerocolumnalogin}} border" id="login" style="height: {{altoencabezado}}; background: {{colorcolumnalogin}} ">
+          </div>
+          <div class="col-{{numerocolumnaenderecha}} border" id="enderecha" style="height: {{altoencabezado}}; background: {{colorcolumnaenderecha}}">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-12 " style="height: {{altobume}}" id="bume">
+        <div class="row" style="margin-bottom:9px; height: {{altobume}}">
+          <div class="col-{{numerocolumnabumeizquierda}} border" style="height: {{altobume}}; background: {{colorcolumnabumeizquierda}}">
+          </div>
+          <div class="col-{{numerocolumnabusqueda}} border" style="height: {{altobume}}; background: {{colorcolumnabusqueda}} ">
+          </div>
+          <div class="col-{{numerocolumnamenu}} border" style="height: {{altobume}}; background: {{colorcolumnamenu}}">
+          </div>
+          <div class="col-{{numerocolumnabumederecha}} border" style="height: {{altobume}}; background: {{colorcolumnabumederecha}}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-12 " style="height: {{altomedio}}" id="medio">
+        <div class="row" style="margin-bottom:9px; height: {{altomedio}}">
+          <div class="col-{{numerocolumnamedioizquierda}} border" style="height: {{altomedio}}; background: {{colorcolumnamedioizquierda}}">
+          </div>
+          <div class="col-{{numerocolumnamediocentro}} border" style="height: {{altomedio}}; background: {{colorcolumnamediocentro}} ">
+              <div class="row">
+                <div class="col-{{columnasizquierdaborra}}  d-flex justify-content-center" id="div-izquierda" style="height: {{altomedio}}; background: #cbcdcf">
+                    <a class="izquierdad" href="" id="mimenos" onclick="Ancho('mimenos','menos','mi')" >
+                      <img  id='imgmimenos' class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="" >
+                    </a>
+                    <a class="derechad" href="{% url 'crear:conf_update_contiguo' %}?proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}" id="mimas" onclick="Ancho('mimas','mas','mi')">
+                      <img id="imgmimas" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+                    </a>
+                </div>
+                <div class="col-{{columnasmodeloborra}}  d-flex justify-content-center" id="div_centro"   style="height: {{altomedio}}; background: #ebedef">
+                    <a class="izquierdad" href="" id="mcmenos" onclick="Ancho('mcmenos','menos','mc')">
+                      <img id='imgmcmenos' class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="" >
+                    </a>
+                    <a class="derechad" href="{% url 'crear:conf_update_contiguo' %}?proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}" id="mcmas" onclick="Ancho('mcmas','mas','mc')">
+                      <img id='imgmcmas' src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+                    </a>
+                </div>
+                <div class="col-{{columnasderechaborra}}  d-flex justify-content-center" id="div_derecha" style="height: {{altomedio}}; background: #dbdddf">
+                    <a class="izquierdad" href="" id="mdmenos" onclick="Ancho('mdmenos','menos','md')">
+                      <img src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+                    </a>
+                    <a class="derechad" href="{% url 'crear:conf_update_contiguo' %}?proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}" id="mdmas" onclick="Ancho('mdmas','mas','md')">
+                      <img src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+                    </a>              
+                </div>
+              </div>
+          </div>
+          <div class="col-{{numerocolumnamedioderecha}} " style="height: {{altomedio}}; background: {{colorcolumnamedioderecha}}; border-right: 1pt solid #dee2e6;border-top: 1pt solid #dee2e6;border-bottom: : 1pt solid #dee2e6;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-12 " style="height: {{altopie}};" id="pie">
+        <div class="row" style="height: {{altopie}}" >
+          <div class="col border" style="{{altopie}}; background: {{colorcolumnapie}}" >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-5 mt-5 text-center">
+      <div class="col">
+        Volver a &nbsp;&nbsp;
+        <a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a>
+      </div>
+    </div>
+  </div>
+
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+
+{% endblock %}
+
+
+<!--                     <a class="izquierdad" href="{% url 'crear:conf_modelo' %}?proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}" id="mimenos" onclick="Ancho('mimenos','menos','mi')">
+                      <img onload="Posicion('mimenos', {{columnasizquierdainserta}},'imgmimenos','imgmimas', 'imgmimast')" id='imgmimenos' class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="" >
+                    </a>
+                    <a class="derechad" href="{% url 'crear:conf_modelo' %}?proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}" id="mimas" onclick="Ancho('mimas','mas','mi')">
+                      <img onload="Posicion('mimas', {{columnasizquierdainserta}},'imgmimenos','imgmimas', 'imgmimast')" id="imgmimas" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+                    </a>
+                    <a class="derecha" href="{% url 'crear:conf_modelo' %}?proyecto_id={{proyecto.id}}&modelo_id={{modelo.id}}" id="mimast" onclick="Ancho('mimast','mas','mi')">
+                      <img id="imgmimast" onload="Posicion('mimast', {{columnasizquierdainserta}},'imgmimenos','imgmimas', 'imgmimast')" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+                    </a>
+ -->

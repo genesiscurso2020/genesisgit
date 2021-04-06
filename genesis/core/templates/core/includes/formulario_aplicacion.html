@@ -1,0 +1,62 @@
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="row mt-5 mb-4">
+                    <div class="col">
+                      <span class="controles-texto-grupo">Datos Generales</span>
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Nombre</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.nombre}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Descripcion</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.descripcion}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Texto opcion menu</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.textoenmenu}}
+                    </div>
+                  </div>
+                  <div class="row" >
+                    {% include 'core/includes/esquema.html' with titulo='Imagen en menu' target='imagenmenu' imagen='core/img/esquema_imagenmenu.png' %}
+                  </div>
+                  {% if aplicacion.imagenmenu %}
+                    <img src="{{aplicacion.imagenmenu.url}}" width="50px" height="50px" alt="">
+                  {% endif %}
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.imagenmenu}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">ToolTip</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.tooltip}}
+                    </div>
+                  </div>
+                  <div class="row " >
+                    <div class="col controles-label">Orden en la generacion</div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col controles_control">
+                      {{form.ordengeneracion}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>

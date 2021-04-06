@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<style>.errorlist{color:red;}</style>
+{% if error == '' %}
+  <div class="container registro">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos">
+          <div class="col datos-registration border">
+            <h3>Registro del Texo</h3><a href="{% url 'proyectos:lista_texto' %}?criterio={{criterio}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green; font-size: 8pt;">(volver)</span></a>
+            <form class="mt-3" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+              {% include 'core/includes/formulario_proyectotexto.html'%}
+
+            <!-- Generales -->
+
+              <!-- {{form.as_p}} -->
+              <input type="submit" class="btn btn-primary btn-block mt-5" value="Confirmar">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+{% endblock %}

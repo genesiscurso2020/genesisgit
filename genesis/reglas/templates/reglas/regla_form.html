@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<style>.errorlist{color:red;}</style>
+{% if error == '' %}
+  <div class="container registro">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos">
+          <div class="col datos-registration border">
+            <h3>Registro de Regla </h3>
+            
+            <div class="row mb-3 mt-3">
+              <div class="col-12">
+                <span class="text-dark">Proyecto:&nbsp;</span><span class="text-muted"><a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a></span>
+              </div>
+              <div class="col-12">
+                <span class="text-dark">Modelo:&nbsp;</span><span class="text-muted">{{modelo.nombre}}</span>
+              </div>
+              <div class="col-12">
+                <span class="text-dark">Propiedad:&nbsp;</span><span class="text-muted">{{propiedad.nombre}}</span>
+              </div>
+            </div>
+            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+              {% include 'core/includes/formulario_regla.html'%}
+              <!-- {{form.as_p}} -->
+              <input type="submit" class="btn btn-primary btn-block mt-5" value="Confirmar">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+{% endblock %}

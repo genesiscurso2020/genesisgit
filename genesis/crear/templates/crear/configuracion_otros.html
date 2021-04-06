@@ -1,0 +1,238 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+
+<style>
+	.centro{
+		position: absolute;
+		top: 47%;
+		left: 50%;
+	}
+	.arriba{
+		position: absolute;
+		top: -10px;
+		left: 30%;
+	}
+	.abajo{
+		position: absolute;
+		bottom: -10px;
+		left: 30%;
+	}
+	.derecha{
+		position: absolute;
+		top:30%;
+		right: -10px;
+	}
+	.izquierda{
+		position: absolute;
+		top:30%;
+		left: -10px;
+	}
+	.centro{
+		position: absolute;
+		top:40%;
+		left: 50%;
+	}
+
+	.arribap{
+		position: absolute;
+		bottom: 0;
+		left: 10%;
+	}
+	.abajop{
+		position: absolute;
+		bottom: 0;
+		left: 40%;
+	}
+	.derechap{
+		position: absolute;
+		top:10%;
+		right: 0;
+	}
+	.izquierdap{
+		position: absolute;
+		top:40%;
+		right: 0;
+	}
+
+</style>
+
+<script>
+function Justificacion(href,direccion) {
+  var h = document.getElementById(href);
+  ref = '{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}';
+  h.href = ref + '&direccion=' + direccion + '&configuracion_proyecto=proyecto';
+}
+function Dimension(href,dimension) {
+  var h = document.getElementById(href);
+  ref = '{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}';
+  h.href = ref + '&dimension=' + dimension + '&configuracion_proyecto=proyecto';
+}
+
+</script>
+
+
+
+</style>
+
+{% if error == '' %}
+	<div class="container" style="padding-top: 140px;">
+		<div class="row mb-3">
+			<div class="col-12 " style="height: {{altoencabezado}}" id="encabezado">
+				<div class="row fila-enizcede mb-5 " id="fila-enizcede" style="margin-bottom: 9px; height: {{altoencabezado}}">
+					{% if numerocolumnaenizquierda > 0 %}
+					<div class="col-{{numerocolumnaenizquierda}} border " id="enizquierda" style="height: {{altoencabezado}}; background: {{colorcolumnaenizquierda}}">
+					</div>
+					{% endif %}
+					{% if numerocolumnalogo > 0 %}
+					<div class="col-{{numerocolumnalogo}} border " id="logo" style="height: {{altoencabezado}}; background: transparent; ">
+						<div class="d-flex {{verticallogo}} {{horizontallogo}}" style="height: {{altoencabezado}}; background: transparent; ">
+							<div class=" border border-dark" style="position: relative; height: {{altologo}}; width:{{anchologo}}; background: #e74c3c " >
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logocentro" onclick="Justificacion('logocentro','logocentro')">
+									<img class="centro" src="{% static 'core/img/circuloSF.png' %}"  width="8px" height="8px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logoderecha" onclick="Justificacion('logoderecha','logoderecha')">
+									<img class="derecha" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logoarriba" onclick="Justificacion('logoarriba','logoarriba')">
+									<img class="arriba" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logoabajo" onclick="Justificacion('logoabajo','logoabajo')">
+									<img class="abajo" src="{% static 'core/img/abajo.png' %}"  width="15px" height="8px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logoizquierda" onclick="Justificacion('logoizquierda','logoizquierda')">
+									<img class="izquierda" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+								</a>
+
+
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logoderechap" onclick="Dimension('logoderechap','logomasderecha')">
+									<img class="derechap" src="{% static 'core/img/derechapequeSF.png' %}"  width="5px" height="8px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logoarribap" onclick="Dimension('logoarribap','logomenosarriba')">
+									<img class="arribap" src="{% static 'core/img/arribapequeSF.png' %}"  width="8px" height="5px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logoabajop" onclick="Dimension('logoabajop','logomasabajo')">
+									<img class="abajop" src="{% static 'core/img/abajopequeSF.png' %}"  width="8px" height="5px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logoizquierdap" onclick="Dimension('logomenosizquierdap','logoizquierda')">
+									<img class="izquierdap" src="{% static 'core/img/izquierdapequeSF.png' %}"  width="5px" height="8px" alt="">
+								</a>
+
+							</div>
+						</div>
+					</div>
+					{% endif %}
+					{% if numerocolumnatitulo > 0 %}
+					<div class="col-{{numerocolumnatitulo}} border " id="titulo" style="height: {{altoencabezado}}; background: transparent;padding-left: {{horizontaltitulo}}; padding-top: {{verticaltitulo}};">
+						<div class="d-flex {{verticaltitulo}} {{horizontaltitulo}}" style="height: {{altoencabezado}}; background: transparent; ">
+							<div class="border border-dark" style="position: relative; height: {{altotitulo}} ; width: {{anchotitulo}};  background: #2874a6" >
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="titulocentro" onclick="Justificacion('titulocentro','titulocentro')">
+									<img class="centro" src="{% static 'core/img/circuloSF.png' %}"  width="8px" height="8px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="tituloderecha" onclick="Justificacion('tituloderecha','tituloderecha')">
+									<img class="derecha" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="tituloarriba" onclick="Justificacion('tituloarriba','tituloarriba')">
+									<img class="arriba" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="tituloabajo" onclick="Justificacion('tituloabajo','tituloabajo')">
+									<img class="abajo" src="{% static 'core/img/abajo.png' %}"  width="15px" height="8px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="tituloizquierda" onclick="Justificacion('tituloizquierda','tituloizquierda')">
+									<img class="izquierda" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+								</a>
+
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="tituloderechap" onclick="Dimension('tituloderechap','titulomasderecha')">
+									<img class="derechap" src="{% static 'core/img/derechapequeSF.png' %}"  width="5px" height="8px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="tituloarribap" onclick="Dimension('tituloarribap','titulomenosarriba')">
+									<img class="arribap" src="{% static 'core/img/arribapequeSF.png' %}"  width="8px" height="5px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="tituloabajop" onclick="Dimension('tituloabajop','titulomasabajo')">
+									<img class="abajop" src="{% static 'core/img/abajopequeSF.png' %}"  width="8px" height="5px" alt="">
+								</a>
+								<a href="{% url 'crear:otros' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="tituloizquierdap" onclick="Dimension('tituloizquierdap','titulomenosizquierda')">
+									<img class="izquierdap" src="{% static 'core/img/izquierdapequeSF.png' %}"  width="5px" height="8px" alt="">
+								</a>
+
+
+
+								
+		 					</div>
+	 					</div>
+					</div>
+					{% endif %}
+					{% if numerocolumnalogin > 0 %}
+					<div class="col-{{numerocolumnalogin}} border" id="login" style="height: {{altoencabezado}}; background: transparent; ">
+					</div>
+					{% endif %}
+					{% if numerocolumnaenderecha > 0 %}
+					<div class="col-{{numerocolumnaenderecha}} border" id="enderecha" style="height: {{altoencabezado}}; background: transparent;">
+						
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-12 " style="height: {{altobume}}" id="bume">
+				<div class="row" style="margin-bottom:9px; height: {{altobume}}">
+					{% if numerocolumnabumeizquierda > 0 %}
+					<div class="col-{{numerocolumnabumeizquierda}} border" style="height: {{altobume}}; background: transparent;">
+					</div>
+					{% endif %}
+					{% if numerocolumnabusqueda > 0 %}
+					<div class="col-{{numerocolumnabusqueda}} border" style="height: {{altobume}}; background: transparent; ">
+					</div>
+					{% endif %}
+					{% if numerocolumnamenu > 0 %}
+					<div class="col-{{numerocolumnamenu}} border" style="height: {{altobume}}; background: transparent;">
+					</div>
+					{% endif %}
+					{% if numerocolumnabumederecha > 0 %}
+					<div class="col-{{numerocolumnabumederecha}} border" style="height: {{altobume}}; background: transparent;">
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-12 " style="height: {{altomedio}}" id="medio">
+				<div class="row" style="margin-bottom:9px; height: {{altomedio}}">
+					{% if numerocolumnamedioizquierda > 0 %}
+					<div class="col-{{numerocolumnamedioizquierda}} border" style="height: {{altomedio}}; background: transparent;">
+					</div>
+					{% endif %}
+					{% if numerocolumnamediocentro > 0 %}
+					<div class="col-{{numerocolumnamediocentro}} border" style="height: {{altomedio}}; background: transparent; ">
+					</div>
+					{% endif %}
+					{% if numerocolumnamedioderecha > 0 %}
+					<div class="col-{{numerocolumnamedioderecha}} border" style="height: {{altomedio}}; background: transparent;">
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-12 " style="height: {{altopie}};" id="pie">
+				<div class="row" style="height: {{altopie}}" >
+					<div class="col border" style="{{altopie}}; background: transparent;" >
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mb-5 mt-5 text-center">
+			<div class="col">
+				Volver a &nbsp;&nbsp;
+				<a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a>
+			</div>
+		</div>
+	</div>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}
+
+
+{% endblock %}

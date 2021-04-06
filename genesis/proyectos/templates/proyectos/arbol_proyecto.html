@@ -1,0 +1,137 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+
+  {% load static %}
+
+{% if error == '' %}
+  <div class="container arbol-proyectos">
+    <div class="row mb-4">
+      <div class="col-12 d-flex titulo-arbol justify-content-left">
+      	{% if proyecto.avatar %}
+      		<img src="{{proyecto.avatar.url}}" alt="">
+      	{% endif %}
+        <h3 class="nombre-proyecto ml-2 align-self-end">{{proyecto.nombre}}</h3>
+      </div>
+    </div>
+
+	<div class="row">
+		<div class="col-12 col-md-2 border rounded pl-4 pt-2">
+			<div class="row mb-2">
+				<small class="text-dark">Aplicaciones</small>
+			</div>
+			{% for objeto in lista_aplicaciones %}
+				<div class="row lista_app mb-1">
+					<a href="{% url 'aplicaciones:borrar' objeto.id %}?proyecto_id={{objeto.proyecto.id}}" class="mr-1" data-toggle="tooltip" data-placement="top" title="Borrar Aplicacion"><img src="{% static 'core/img/borrar32.ico' %}" alt=""></a>
+					<a href="{% url 'aplicaciones:editar' objeto.id %}?proyecto_id={{objeto.proyecto.id}}&aplicacion_id={{objeto.id}}" data-toggle="tooltip" data-placement="top" title="Editar Aplicacion"><small>{{objeto.nombre}}</small></a>
+					
+				</div>
+			{% endfor %}
+			<div class="row mb-3 mt-5">
+				<small class="text-dark">Reportes</small>
+			</div>
+
+			{% for objeto in lista_reportes %}
+				<div class="row lista_app mb-1">
+					<a href="{% url 'crear:reporte' objeto.id %}?proyecto_id={{proyecto_id}}&size={{objeto.reportesize}}&orientacion={{objeto.orientacion}}" data-toggle="tooltip" data-placement="top" >
+					{% if objeto.reportesize == 'L' and objeto.orientacion == 'P' %}
+						<small>Letter-Portrait</small>
+					{% endif %}
+					{% if objeto.reportesize == 'L' and objeto.orientacion == 'L' %}
+						<small>Letter-Landscape</small>
+					{% endif %}
+					{% if objeto.reportesize == 'A' and objeto.orientacion == 'P' %}
+						<small>A4-Portrait</small>
+					{% endif %}
+					{% if objeto.reportesize == 'A' and objeto.orientacion == 'L' %}
+						<small>A4-Landscape</small>
+					{% endif %}
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="col-12 col-md-10 pl-4 pt-2 border rounded">
+			{% for objeto in lista_crear %}
+				<div class="row lista mb-2">
+					<div class="col d-flex align-items-center"  style="padding-left: {{objeto.identa}}px ">
+						{% if objeto.elemento == 'p' %}
+							<!-- Settings -->
+							<a href="{% url 'crear:conf_base_nueva' %}?proyecto_id={{objeto.proyectoid}}&configuracion_proyecto=proyecto" data-toggle="tooltip" data-placement="top" title="Configuracion"><img src="{% static 'core/img/settings.png' %}" alt=""></a>
+							<!-- Crear aplicaciones -->
+							<a class="ml-1" href="{% url 'aplicaciones:crear' %}?proyecto_id={{objeto.proyectoid}}" data-toggle="tooltip" data-placement="top" title="Nueva Aplicacion"><img src="{% static 'core/img/nuevaaplicacion32.ico' %}" alt=""></a>
+							<!-- Nuevo modelo -->
+							<a class="ml-1" href="{% url 'modelos:crear' %}?proyecto_id={{objeto.proyectoid}}&modelo_id=0&mensaje_error=" data-toggle="tooltip" data-placement="top" title="Nuevo Modelo"><img src="{% static 'core/img/nuevo.png' %}" alt=""></a>
+							<!-- Editar modelo -->
+							<a href="{% url 'proyectos:editar' objeto.proyectoid %}" data-toggle="tooltip" data-placement="top" title="Editar Proyecto"><span class="arbol-nombre-proyecto ml-1">{{objeto.nombre}}</span></a>
+							
+							
+						{% endif %}
+						{% if objeto.elemento == 'a' %}
+							<a href="{% url 'modelos:crear' %}?aplicacion_id={{objeto.aplicacionid}}&proyecto_id={{objeto.proyectoid}}" ><i class="icon-plus"></i>Mas</a>
+							<a href=""><i class="icon-edit"></i></a>
+							{{objeto.nombre}}
+						{% endif %}
+						{% if objeto.elemento == 'm' %}
+							{% if objeto.posicion > 1 and objeto.identa == 50 %}
+								<!-- arriba -->
+								<a href="{% url 'proyectos:arbol' %}?proyecto_id={{objeto.proyectoid}}&modelo_id={{objeto.modeloid}}&configuracion_proyecto=modelo&modeloarriba=1" data-toggle="tooltip" data-placement="top" title="Mover una posicion arriba"><img width="12px" src="{% static 'core/img/arribamover.png' %}" alt="" ></a>
+							{% endif %}
+							{% if objeto.ultimoregistro != 'u' and objeto.identa == 50 %}
+							<!-- abajo -->
+								<a href="{% url 'proyectos:arbol' %}?proyecto_id={{objeto.proyectoid}}&modelo_id={{objeto.modeloid}}&configuracion_proyecto=modelo&modeloabajo=1" data-toggle="tooltip" data-placement="top" title="Mover una posicion abajo"><img width="12px" src="{% static 'core/img/abajomover.png' %}" alt=""></a>
+							{% endif %}
+							<!-- settings -->
+							<a href="{% url 'crear:conf_modelo' %}?proyecto_id={{objeto.proyectoid}}&modelo_id={{objeto.modeloid}}&configuracion_proyecto=modelo" data-toggle="tooltip" data-placement="top" title="Configuracion"><img src="{% static 'core/img/settings.png' %}" alt=""></a>
+							<!-- Nuevo modelo -->
+							<a class="ml-1" href="{% url 'modelos:crear' %}?proyecto_id={{objeto.proyectoid}}&modelo_id={{objeto.modeloid}}&mensaje_error=" data-toggle="tooltip" data-placement="top" title="Nuevo Modelo"><img src="{% static 'core/img/nuevo.png' %}" alt=""></a>
+							<!-- Borrar modelo -->
+							<a class="ml-1" href="{% url 'modelos:borrar' objeto.modeloid  %}?proyecto_id={{objeto.proyectoid}}&nombre={{objeto.nombre}}" data-toggle="tooltip" data-placement="top" title="Borrar Modelo"><img src="{% static 'core/img/borrar.png' %}" alt=""></a>
+							<!-- Nueva propiedad -->
+							<a class="ml-1" href="{% url 'propiedades:crear' %}?proyecto_id={{objeto.proyectoid}}&modelo_id={{objeto.modeloid}}" data-toggle="tooltip" data-placement="top" title="Nueva Propiedad" ><img src="{% static 'core/img/propiedades132.ico' %}" alt=""></a>
+							<!-- Editar modelo -->
+							<a href="{% url 'modelos:editar' objeto.modeloid %}?proyecto_id={{objeto.proyectoid}}&modelo_id={{objeto.modeloid}}&mensaje_error=" data-toggle="tooltip" data-placement="top" title="Editar Modelo"><span class="arbol-nombre-modelo ml-1">{{objeto.nombre}}</span></a>
+							
+						{% endif %}
+						{% if objeto.elemento == 'd' %}
+<!-- 							<a href="{% url 'modelos:crear' %}?proyecto_id={{objeto.proyectoid}}" data-toggle="tooltip" data-placement="top" title="Configuracion"><img src="{% static 'core/img/settings.png' %}" alt=""></a> -->
+							<a class="ml-1" href="{% url 'reglas:crear' %}?proyecto_id={{objeto.proyectoid}}&modelo_id={{objeto.modeloid}}&propiedad_id={{objeto.propiedadid}}" data-toggle="tooltip" data-placement="top" title="Nueva Regla" ><img src="{% static 'core/img/regla.png' %}"  alt=""></a>
+							<a class="ml-1" href="{% url 'propiedades:borrar' objeto.propiedadid  %}?proyecto_id={{objeto.proyectoid}}" data-toggle="tooltip" data-placement="top" title="Borrar Propiedad"><img src="{% static 'core/img/borrar.png' %}" alt=""></a>
+							<a href="{% url 'propiedades:editar' objeto.propiedadid %}?proyecto_id={{objeto.proyectoid}}" data-toggle="tooltip" data-placement="top" title="Editar Propiedad"><span class="arbol-nombre-propiedad ml-1">{{objeto.nombre}}</span></a>
+						{% endif %}
+						{% if objeto.elemento == 'r' %}
+							<a href="{% url 'reglas:borrar' objeto.reglaid  %}?proyecto_id={{objeto.proyectoid}}" data-toggle="tooltip" data-placement="top" title="Borrar Regla"><img src="{% static 'core/img/borrar.png' %}" alt=""></a>
+							<a href="{% url 'reglas:editar' objeto.reglaid %}?proyecto_id={{objeto.proyectoid}}" data-toggle="tooltip" data-placement="top" title="Editar Regla"><span class="arbol-nombre-regla ml-1">{{objeto.nombre}}</span></a>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>	
+	</div>
+
+	<div class="mt-3 d-flex flex-row mb-5">
+		<!-- <div class="col-12 col-md-6"> -->
+			<a class="btn btn-primary" href="{% url 'crear:home' %}?proyecto_id={{proyecto.id}}&estado=0" data-toggle="tooltip" data-placement="top" title="Construir el Proyecto"><img src="{% static 'core/img/fabrica.png' %}" alt=""><span class="ml-2">Construir</span></a>
+		<!-- </div> -->
+		<!-- <div class="col-12 col-md-6"> -->
+			<a class="btn btn-primary ml-2" href="{% url 'personalizacion:home' %}?proyecto_id={{proyecto.id}}&estado=0&ingreso=1" data-toggle="tooltip" data-placement="top" title="Personalizar el Proyecto"><img src="{% static 'core/img/pincel.png' %}" alt=""><span class="ml-2">Personalizar</span></a>
+
+			<a class="btn btn-primary ml-2" href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}&haciatexto=1" data-toggle="tooltip" data-placement="top" title="Personalizar el Proyecto"><img src="{% static 'core/img/pincel.png' %}" alt=""><span class="ml-2">Hacia Texto</span></a>
+
+			<a class="btn btn-primary ml-2" href="{% url 'proyectos:descarga' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Descargar el Proyecto"><img  src="{% static 'core/img/download.png' %}" alt=""><span class="ml-2">Download</span></a>
+			{% if tiene_errores == True %}
+				<a class="btn btn-primary ml-2" href="{% url 'crear:lista' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Listar Errores"><imgsrc="{% static 'core/img/errores.png' %}" alt=""><span class="ml-2">Listar errores</span></a>
+			{% endif %}
+		<!-- </div> -->
+	</div>
+
+  </div>
+	
+	<script>
+		$(function(){
+			$('[data-toggle="tooltip"]').tooltip();
+		})
+	</script>
+{% else %}
+    {% include 'core/includes/pagina_error.html'%}
+{% endif %}	
+{% endblock %}  

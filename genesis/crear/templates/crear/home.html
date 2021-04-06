@@ -1,0 +1,117 @@
+{% extends 'core/base.html' %}
+
+{% block cuerpo %}
+{% load static %}
+
+<style>.errorlist{color:red;}</style>
+
+  <div class="container construir">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-lg-10 externa border ">
+        <div class="row fila-color-uno"></div>
+        <div class="row fila-color-dos"></div>
+        <div class="row fila-datos">
+          <div class="col pasos border">
+            <!-- Pasos -->
+            <div class="row">
+              <div class="jumbotron" >
+                <h3>Pasos en la construccion del Proyecto: <a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a></h3>
+                <p class="lead mb-4 texto-paso mb-5">Los Pasos se iran habilitando a medida que la ejecucion de los pasos previos sea exitosa.</p>
+                <div class="container mb-3 " >
+                  <p class="titulo-paso">Paso 1</p>
+                  <p class="lead mb-4 texto-paso">Este paso construye los directorios y archivos iniciales del proyecto</p>
+                  <div class="border d-flex">
+                  {% if proyecto.estadogeneracion >= 0 %}
+                    <a href="{% url 'crear:home' %}?proyecto_id={{proyecto.id}}&estado=1" class="btn btn-primary btn-sm">Ejecutar</a>
+                  {% endif %}
+                  
+                  <a href="{% url 'crear:crear_pasos' %}?proyecto_id={{proyecto.id}}&paso=1" class="btn btn-secondary btn-sm ml-auto">Lo que ejecuta este paso</a>
+                  </div>
+                </div>
+                <div class="container mb-3">
+                  <p class="titulo-paso">Paso 2</p>
+                  <p class="lead mb-4 texto-paso">Este paso construye los directorios y archivos iniciales de las Aplicaciones</p>
+                  <div class="border d-flex">
+                    {% if proyecto.estadogeneracion >= 1 %}
+                      <a href="{% url 'crear:home' %}?proyecto_id={{proyecto.id}}&estado=2" class="btn btn-primary btn-sm">Ejecutar</a>
+                    {% endif %}
+                    <a href="{% url 'crear:crear_pasos' %}?proyecto_id={{proyecto.id}}&paso=2" class="btn btn-secondary btn-sm ml-auto">Lo que ejecuta este paso</a>
+                  </div>
+                </div>
+                <div class="container mb-3">
+                  <p class="titulo-paso">Paso 3</p>
+                  <p class="lead mb-4 texto-paso">Este paso construye los Modelos del Proyecto para cada una de las Aplicaciones. Despu'es de este paso, se debe descargar el proyecto y ejecutar en la consola los comandos: migrate, makemigrations y migrate nuevamente. Esto evita los errores cuando se reinicia el servidor y permite a los formularios no tener errores cuando se haga referencia a los modelos.</p>
+                  <div class="border d-flex">
+                    {% if proyecto.estadogeneracion >= 2 %}
+                      <a href="{% url 'crear:home' %}?proyecto_id={{proyecto.id}}&estado=3" class="btn btn-primary btn-sm">Ejecutar</a>
+                    {% endif %}
+                      <a href="{% url 'crear:crear_pasos' %}?proyecto_id={{proyecto.id}}&paso=3" class="btn btn-secondary btn-sm ml-auto">Lo que ejecuta este paso</a>
+                    </div>
+                </div>
+                <div class="container mb-3">
+                  <p class="titulo-paso">Paso 4</p>
+                  <p class="lead mb-4 texto-paso">Este paso construye las Vistas del Proyecto y crear los archivos views.py para cada una de las Aplicaciones del Proyecto.</p>
+                  <div class="border d-flex">
+                    {% if proyecto.estadogeneracion >= 3 %}
+                      <a href="{% url 'crear:home' %}?proyecto_id={{proyecto.id}}&estado=4" class="btn btn-primary btn-sm">Ejecutar</a>
+                    {% endif %}
+                      <a href="{% url 'crear:crear_pasos' %}?proyecto_id={{proyecto.id}}&paso=4" class="btn btn-secondary btn-sm ml-auto">Lo que ejecuta este paso</a>
+                  </div>
+                </div>
+                <div class="container mb-3">
+                  <p class="titulo-paso">Paso 5</p>
+                  <p class="lead mb-4 texto-paso">Este paso construye las urls del Proyecto y crea el archivo urls.py para cada una de las Aplicaciones del Proyecto.</p>
+                  <div class="border d-flex">
+                    {% if proyecto.estadogeneracion >= 4 %}
+                      <a href="{% url 'crear:home' %}?proyecto_id={{proyecto.id}}&estado=5" class="btn btn-primary btn-sm">Ejecutar</a>
+                    {% endif %}
+                    <a href="{% url 'crear:crear_pasos' %}?proyecto_id={{proyecto.id}}&paso=5" class="btn btn-secondary btn-sm ml-auto">Lo que ejecuta este paso</a>
+                  </div>
+                </div>
+                <div class="container mb-3">
+                  <p class="titulo-paso">Paso 6</p>
+                  <p class="lead mb-4 texto-paso">Este paso construye los formularios del Proyecto y crear el archivo forms.py para cada una de las Aplicaciones del Proyecto.</p>
+                  <div class="border d-flex">
+                    {% if proyecto.estadogeneracion >= 5 %}
+                      <a href="{% url 'crear:home' %}?proyecto_id={{proyecto.id}}&estado=6" class="btn btn-primary btn-sm">Ejecutar</a>
+                    {% endif %}
+                    <a href="{% url 'crear:crear_pasos' %}?proyecto_id={{proyecto.id}}&paso=6" class="btn btn-secondary btn-sm ml-auto">Lo que ejecuta este paso</a>
+                  </div>
+                </div>
+                <div class="container mb-3">
+                  <p class="titulo-paso">Paso 7</p>
+                  <p class="lead mb-4 texto-paso">Este paso construye los templates del Proyecto y crear los archivo con extension html para las operaciones de insercion, modificacion, borrado y listado de cada uno de los Modelos raiz del Proyecto y las operaciones de insercion, edicion y borrado para los modelos dependientes.</p>
+                  <div class="border d-flex">
+                    {% if proyecto.estadogeneracion >= 6 %}
+                      <a href="{% url 'crear:home' %}?proyecto_id={{proyecto.id}}&estado=7" class="btn btn-primary btn-sm">Ejecutar</a>
+                    {% endif %}
+                    <a href="{% url 'crear:crear_pasos' %}?proyecto_id={{proyecto.id}}&paso=7" class="btn btn-secondary btn-sm ml-auto">Lo que ejecuta este paso</a>
+                  </div>
+                </div>
+                <div class="container mb-3">
+                  <p class="titulo-paso">Paso 8</p>
+                  <p class="lead mb-4 texto-paso">Este paso construye todo el esquema de seguridad del Proyecto. Sera necesario descargar el proyecto y ejecutar makemigratios registration y migrate regitration para crear las tablas de seguridad y de perfil en la base de datos.</p>
+                  <div class="border d-flex">
+                    {% if proyecto.estadogeneracion >= 7 %}
+                      <a href="{% url 'crear:home' %}?proyecto_id={{proyecto.id}}&estado=8" class="btn btn-primary btn-sm">Ejecutar</a>
+                    {% endif %}
+                    <a href="{% url 'crear:crear_pasos' %}?proyecto_id={{proyecto.id}}&paso=8" class="btn btn-secondary btn-sm ml-auto">Lo que ejecuta este paso</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-3 d-flex flex-row">
+                {% if tiene_errores == True %}
+                  <a class="btn btn-primary ml-2" href="{% url 'crear:lista' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Descargar el Proyecto"><img src="{% static 'core/img/errores.png' %}" alt=""><span class="ml-2">Listar errores</span></a>
+                {% endif %}
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

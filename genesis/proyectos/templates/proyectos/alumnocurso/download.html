@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+
+<style>
+	.download{
+		padding-top: 120px
+	}
+	.download-datos{
+		font-family: raleway; 
+		font-size: 12pt;
+		text-align: center;
+	}
+
+</style>
+	<div class="container mt-5 mb-5 download">
+		<div class="row font_encabezado mb-3 text-center " style="height: 50px;">
+			<div class="col" >
+
+				<h3>DESCARGA DEL PROYECTO: <a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a></h3>
+
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col download-datos" >
+				El poyecto se descarga con el nombre:&nbsp; <b>controlproyectos.zip</b>
+			</div>
+		</div>		
+		<div class="row mt-3">
+			<div class="col text-center">
+				<a href="{% static 'core/zipfiles/alumnocurso/controlproyectos.zip' %}"  ><img src="{% static 'core/img/download_d.png' %}"></a>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col text-center ">
+				{{nombre}}.zip
+			</div>
+		</div>
+	</div>
+{% endblock %}

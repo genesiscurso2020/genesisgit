@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Genesis</title>
+	{% include 'core/includes/css_general.html'%}
+
+<!-- #@[p_base_01] -->
+
+</head>
+<body style="@estilo" >
+	
+	<!--  LOGO, MENU Y BUSQUEDA -->
+
+<!-- #@[p_base_02] -->
+
+	<main class="container">
+		<div class="row fila-enizcede">
+<!-- #@[p_base_03] -->
+			<!-- <div class="col-@12numerocolumnaenizquierda col-md-@numerocolumnaenizquierda columna-enizquierda"></div> -->
+			<div class="d-none d-md-block col-md-@numerocolumnaenizquierda columna-enizquierda"></div>
+<!-- #@[p_base_04] -->
+			<!-- <div class="col-@12numerocolumnalogo col-md-@numerocolumnalogo columna-logo d-flex @justificacionlogohorizontal @justificacionlogovertical"> -->
+			<div class="col-2 col-md-@numerocolumnalogo columna-logo d-flex @justificacionlogohorizontal @justificacionlogovertical">
+				<div class="d-flex @justificacionlogohorizontal @justificacionlogovertical">
+					@logo
+				</div>
+			</div>
+<!-- #@[p_base_05] -->
+			<!-- <div class="col-@12numerocolumnatitulo col-md-@numerocolumnatitulo columna-titulo d-flex @justificaciontitulohorizontal @justificaciontitulovertical"> -->
+			<div class="col-10 col-md-@numerocolumnatitulo columna-titulo d-flex @justificaciontitulohorizontal @justificaciontitulovertical">
+				<div class="d-flex @justificaciontitulohorizontal @justificaciontitulovertical">
+					@titulo
+				</div>
+			</div>
+<!-- #@[p_base_06] -->
+			<!-- <div class="col-@12numerocolumnalogin col-md-@numerocolumnalogin columna-login"></div> -->
+			<div class="d-none d-md-block col-md-@numerocolumnalogin columna-login"></div>
+<!-- #@[p_base_07] -->
+			<!-- <div class="col-@12numerocolumnaenderecha col-md-@numerocolumnaenderecha columna-enderecha"></div> -->
+			<div class="d-none d-md-block col-md-@numerocolumnaenderecha columna-enderecha"></div>
+		</div>
+<!-- #@[p_base_08] -->
+		<div class="row fila-bume mt-@separacion">
+			<!-- <div class="col-@12numerocolumnabumeizquierda d-none d-md-block col-md-@numerocolumnabumeizquierda columna-bume-izquierda"></div> -->
+			<div class="d-none d-md-block col-md-@numerocolumnabumeizquierda columna-bume-izquierda"></div>
+<!-- #@[p_base_09] -->
+
+<!-- #@[p_base_10] -->
+@busqueda
+<!-- #@[p_base_11] -->
+
+<!-- #@[p_base_12] -->
+			<!-- <div class="col-@12numerocolumnamenu col-md-@numerocolumnamenu col-sm-@numerocolumnamenu col-lg-@numerocolumnamenu justify-content-between d-flex align-items-center columna-menu"> -->
+			<div class="col-6 col-md-@numerocolumnamenus2 columna-menu">
+				{% block menu %}{% endblock %}
+			</div>
+			<div class="col-6 col-md-@numerocolumnamenus2 justify-content-end d-flex columna-menu">
+				{% block menuseguridad %}{% endblock %}
+			</div>
+<!-- #@[p_base_13] -->
+			<div class="d-none d-md-block col-md-@numerocolumnabumederecha columna-bume-derecha"></div>
+		</div>
+<!-- #@[p_base_14] -->
+		<div class="row fila-medio mt-4">
+<!-- #@[p_base_15] -->
+			<!-- <div class="col-@numerocolumnamedioizquierda columna-medioizquierda"> -->
+			<div class="d-none d-md-block col-md-@numerocolumnamedioizquierda columna-medioizquierda">
+				<!-- Personaliza medio izquierda -->
+			</div>
+<!-- #@[p_base_16] -->
+			<!-- <div class="col-@numerocolumnamediocentro columna-mediocentro"> -->
+			<div class="col-12 col-md-@numerocolumnamediocentro columna-mediocentro">
+				{% block cuerpo %}{% endblock %}
+			</div>
+<!-- #@[p_base_17] -->
+			<!-- <div class="col-@numerocolumnamedioderecha columna-medioderecha"> -->
+			<div class="d-none d-md-block col-md-@numerocolumnamedioderecha columna-medioderecha">
+				<!-- Personaliza medio derecha -->
+			</div>
+		</div>
+<!-- #@[p_base_18] -->
+		<div class="row fila-pie mt-4 mb-5">
+			<div class="col columna-pie"></div>
+		</div>
+<!-- #@[p_base_19] -->
+	</main>
+<!-- #@[p_base_20] -->
+
+<!-- #@[p_base_21] -->
+
+	{% include 'core/includes/js_general.html'%}
+
+</body>
+<!-- #@[p_base_22] -->
+
+</html>
+
+<!-- #@[p_base_23] -->

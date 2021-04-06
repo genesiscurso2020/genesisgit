@@ -1,0 +1,214 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block cuerpo %}
+
+
+{% if error == '' %}
+
+	<div class="container registro">
+		<!-- encabezado -->
+		<div class="row border" style="height: 100px">
+			<!-- izquierda -->
+			<div class="col" style="height: 80px">
+				
+			</div>
+			<!-- logo -->
+			<div class="col"  style="height: 80px">
+				
+			</div>
+			<!-- titulo -->
+			<div class="col"  style="height: 80px">
+				
+			</div>
+			<!-- login -->
+			<div class="col"  style="height: 80px">
+				
+			</div>
+			<!-- derecha -->
+			<div class="col">
+				
+			</div>
+		</div>
+		<!-- busqueda -->
+		<div class="row">
+			<!-- busqueda -->
+			<div class="col">
+				
+			</div>
+			<!-- menu -->
+			<div class="col">
+				
+			</div>
+		</div>
+		<!-- medio -->
+		<div class="row">
+			<!-- medio izquierda -->
+			<div class="col">
+				
+			</div>
+			<!-- medio modelo -->
+			<div class="col">
+				
+			</div>
+			<!-- medio derecha -->
+			<div class="col">
+				
+			</div>
+		</div>
+		<!-- pie -->
+		<div class="row">
+			<div class="col">
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="container" style="padding-top: 140px;">
+		<div class="row mb-3">
+			<div class="col-12 " style="height: 30px" id="encabezado">
+				<div class="row fila-enizcede mb-5 " id="fila-enizcede" style="margin-bottom: 9px; height: {{altoencabezado}}">
+					<div class="col-{{numerocolumnaenizquierda}}  d-flex justify-content-center" id="enizquierda" style="height: {{altoencabezado}}; background: {{colorcolumnaenizquierda}}">
+						<a class="izquierdad align-self-start" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="eimenos" onclick="Ancho('eimenos','menos','ei')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="eimas" onclick="Ancho('eimas','mas','ei')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+					</div>
+					<div class="col-{{numerocolumnalogo}}  d-flex justify-content-center" id="logo" style="height: {{altoencabezado}}; background: {{colorcolumnalogo}} ">
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logomenos" onclick="Ancho('logomenos','menos','logo')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="logomas" onclick="Ancho('logomas','mas','logo')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+					</div>
+					<div class="col-{{numerocolumnatitulo}}  d-flex justify-content-center" id="titulo" style="height: {{altoencabezado}}; background: {{colorcolumnatitulo}}">
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="titulomenos" onclick="Ancho('titulomenos','menos','titulo')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="titulomas" onclick="Ancho('titulomas','mas','titulo')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+					</div>
+					<div class="col-{{numerocolumnalogin}}  d-flex justify-content-center" id="login" style="height: {{altoencabezado}}; background: {{colorcolumnalogin}} ">
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="loginmenos" onclick="Ancho('loginmenos','menos','login')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="loginmas" onclick="Ancho('loginmas','mas','login')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+					</div>
+					<div class="col-{{numerocolumnaenderecha}}  d-flex justify-content-center" id="enderecha" style="height: {{altoencabezado}}; background: {{colorcolumnaenderecha}}">
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="edmenos" onclick="Ancho('edmenos','menos','ed')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="edmas" onclick="Ancho('edmas','mas','ed')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						
+					</div>
+				</div>
+				<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="fencabezadoarriba" onclick="AltoEncabezado('fencabezadoarriba','encabezado','menos','faltoencabezado')"><img class="arriba" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt=""></a>
+				<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="fencabezadoabajo" onclick="AltoEncabezado('fencabezadoabajo','encabezado','mas','faltoencabezado')"><img class="abajo" src="{% static 'core/img/abajo.png' %}"  width="15px" height="8px" alt=""></a>
+			</div>
+		</div>
+		<!-- <br> -->
+		<div class="row mb-3">
+			<div class="col-12 " style="height: {{altobume}}" id="bume">
+				<div class="row" style="margin-bottom:9px; height: {{altobume}}">
+					<div class="col-{{numerocolumnabumeizquierda}}  d-flex justify-content-center" style="height: {{altobume}}; background: {{colorcolumnabumeizquierda}}">
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="bimenos" onclick="Ancho('bimenos','menos','bi')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="bimas" onclick="Ancho('bimas','mas','bi')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+					</div>
+					<div class="col-{{numerocolumnabusqueda}}  d-flex justify-content-center" style="height: {{altobume}}; background: {{colorcolumnabusqueda}} ">
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="bumenos" onclick="Ancho('bumenos','menos','busqueda')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="bumas" onclick="Ancho('bumas','mas','busqueda')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+					</div>
+					<div class="col-{{numerocolumnamenu}}  d-flex justify-content-center" style="height: {{altobume}}; background: {{colorcolumnamenu}}">
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="menumenos" onclick="Ancho('menumenos','menos','menu')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="menumas" onclick="Ancho('menumas','mas','menu')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+					</div>
+					<div class="col-{{numerocolumnabumederecha}}  d-flex justify-content-center" style="height: {{altobume}}; background: {{colorcolumnabumederecha}}">
+
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="bdmenos" onclick="Ancho('bdmenos','menos','bd')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="bdmas" onclick="Ancho('bdmas','mas','bd')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+					</div>
+				<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="fbumearriba" onclick="AltoEncabezado('fbumearriba','bume','menos','faltobume')"><img class="arriba" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt=""></a>
+				<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="fbumeabajo" onclick="AltoEncabezado('fbumeabajo','bume','mas','faltobume')"><img class="abajo" src="{% static 'core/img/abajo.png' %}"  width="15px" height="8px" alt=""></a>
+				</div>
+			</div>
+		</div>
+		<!-- <br> -->
+		<div class="row mb-3">
+			<div class="col-12 " style="height: {{altomedio}}" id="medio">
+				<div class="row" style="margin-bottom:9px; height: {{altomedio}}">
+					<div class="col-{{numerocolumnamedioizquierda}}  d-flex justify-content-center" style="height: {{altomedio}}; background: {{colorcolumnamedioizquierda}}">
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="mimenos" onclick="Ancho('mimenos','menos','mi')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="mimas" onclick="Ancho('mimas','mas','mi')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+					</div>
+					<div class="col-{{numerocolumnamediocentro}}  d-flex justify-content-center" style="height: {{altomedio}}; background: {{colorcolumnamediocentro}} ">
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="mcmenos" onclick="Ancho('mcmenos','menos','mc')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="mcmas" onclick="Ancho('mcmas','mas','mc')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+
+					</div>
+					<div class="col-{{numerocolumnamedioderecha}}  d-flex justify-content-center" style="height: {{altomedio}}; background: {{colorcolumnamedioderecha}}">
+						<a class="izquierdad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="mdmenos" onclick="Ancho('mdmenos','menos','md')">
+							<img class="" src="{% static 'core/img/izquierda.png' %}"  width="8px" height="15px" alt="">
+						</a>
+						<a class="derechad" href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="mdmas" onclick="Ancho('mdmas','mas','md')">
+							<img class="" src="{% static 'core/img/derecha.png' %}"  width="8px" height="15px" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+		<br>
+		</div>
+		<!-- <br> -->
+		<div class="row mb-3">
+			<div class="col-12 " style="height: {{altopie}};" id="pie">
+				<div class="row" style="height: {{altopie}}" >
+					<div class="col " style="{{altopie}}; background: {{colorcolumnapie}}" >
+					</div>
+				</div>
+				<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="fpiearriba" onclick="AltoEncabezado('fpiearriba','pie','menos','faltopie')"><img class="arriba" src="{% static 'core/img/arriba.png' %}"  width="15px" height="8px" alt=""></a>
+				<a href="{% url 'crear:conf_base' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" id="fpieabajo" onclick="AltoEncabezado('fpieabajo','pie','mas','faltopie')"><img class="abajo" src="{% static 'core/img/abajo.png' %}"  width="15px" height="8px" alt=""></a>
+			</div>
+		</div>
+		<div class="row mt-5 mb-5 text-center">
+			<div class="col">
+				Volver a &nbsp;&nbsp;
+				<a href="{% url 'proyectos:arbol' %}?proyecto_id={{proyecto.id}}&configuracion_proyecto=proyecto" data-toggle="tooltip" data-placement="top" title="Volver al arbol"><span style="color:green">{{proyecto.nombre}}</span></a>
+			</div>
+		</div>
+
+	</div>
+{% else %}
+{% endif %}
+
+{% endblock %}
